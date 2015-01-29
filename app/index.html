@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ben Southgate</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- build:css:dist app.min.css -->
+  <link rel="stylesheet" href="./lib/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- /build -->
+</head>
+<body data-target="#sidenav" data-spy="scroll">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="container" id="main-container">
+
+      <div class="col-md-2 col-lg-2 col-lg-offset-1" id="sidenav">
+        <ul class="nav nav-stacked" id="sidebar">
+          <li><a href="#vizualization">Vizualization</a></li>
+          <li><a href="#thoughts">Thoughts</a></li>
+          <li><a href="#bibliography">Bibliography</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-8 col-lg-6">
+
+        <h1 id="main-header">Ben Southgate</h1>
+        <hr/>
+
+        <div id="content">
+          <section id="vizualization">
+            <h2>Vizualization</h2>
+
+            <div class="img-container">
+              <div class="viz-title">Build Your Own Pension Plan</div>
+              <a href="http://datatools.urban.org/features/build-your-own-pension">
+                <img src="images/build-your-own-pension.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+
+            <div class="img-container">
+              <div class="viz-title">Vizualizing Gaps in Domestic Violence Data </div>
+              <a href="http://datatools.urban.org/Features/domestic-violence-data/dataviz/">
+                <img src="images/datadive.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+
+            <div class="img-container">
+              <div class="viz-title">Crimes in US Cities</div>
+              <a href="http://datatools.urban.org/features/bsouthga/crimeplot/">
+                <img src="images/crimeplot.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+
+            <div class="img-container">
+              <div class="viz-title">Gun Violence in Washington DC</div>
+              <a href="http://datatools.urban.org/features/everydayviolence/">
+                <img src="images/everydayviolence.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+
+            <div class="img-container">
+              <div class="viz-title">Minimum Wage Meta-analysis</div>
+              <a href="http://blog.metrotrends.org/2014/08/higher-minimum-wages-improve-economic-well-being-dc/">
+                <img src="images/metaanalysis.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+
+
+            <div class="img-container">
+              <div class="viz-title">SLEPP Report Card</div>
+              <a href="http://datatools.urban.org/features/slepp/">
+                <img src="images/slepp.png" alt="" class="bw img-responsive img-rounded">
+              </a>
+            </div>
+          </section>
+
+          <section id="thoughts">
+            <h2>Thoughts</h2>
+            <table class="table">
+            <thead>
+              <tr>
+                <th class="date-cell">Date</th>
+                <th></th>
+                <th>Subject</th>
+              </tr>
+            </thead>
+             <tbody id="posts"></tbody>
+            </table>
+          </section>
+
+          <section id="bibliography">
+            <h2>Bibliography</h2>
+            <div id="pubs"></div>
+            <div class="text-center">
+              <button class="btn btn-default btn-sm" id="more-pubs">
+                show all
+              </button class="btn btn-default">              
+            </div>
+          </section>
+
+          <section id="about">
+
+          <h2>About</h2>
+
+            <p>
+            I'm Ben, currently a research assistant at the Urban Institute in Washington D.C. and a graduate of Carleton College. I like tinkering with CoffeeScript for data vizualization, and Python and Julia for statistical programming.
+            </p>
+
+            <div id="self-image">
+              <img src="images/headshot-bw-nobg-sq.png" alt="" class="img-responsive">
+            </div>
+
+            <div id="media">
+              <a href="https://github.com/bsouthga?tab=repositories">
+                <i class="fa fa-github fa-2x"></i>
+              </a>
+              <a href="http://www.twitter.com/bsouthga/" >
+                <i class="fa fa-twitter fa-2x"></i>
+              </a>
+              <a href="http://www.linkedin.com/in/bensouthgate/" >
+                <i class="fa fa-linkedin fa-2x"></i>
+              </a>
+              <a href="https://github.com/bsouthga/cv/blob/master/cv.pdf?raw=true" >
+                <i class="fa fa-file-text-o fa-2x"></i>
+              </a>
+            </div>
+
+          </section>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <hr/>
+        <div id="footer">
+          <i class="fa fa-copyright"></i> <a href="/">Ben Southgate</a> | 2014
+        </div>
+      </div>
+
+  </div>
+  <!-- add scripts here for concatenation into production -->
+  <!-- build:js:dist app.min.js -->
+  <script src="lib/vendor/jquery/jquery.min.js"></script>
+  <script src="lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/main.js"></script>
+  <!-- /build -->
+</body>
+</html>
+

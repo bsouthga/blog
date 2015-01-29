@@ -1,0 +1,15 @@
+{
+  "name": "coffeeviz",
+  "version": "0.0.0",
+  "dependencies": {
+   "grunt-contrib-uglify" : "latest",
+   "grunt-contrib-watch" : "latest",
+   "grunt-contrib-coffee" : "latest",
+   "grunt-contrib-concat" : "latest",
+   "grunt-contrib-copy" : "latest",
+   "grunt-contrib-htmlmin" : "latest",
+   "grunt-contrib-cssmin" : "latest",
+   "grunt-browser-sync" : "latest",
+   "grunt-processhtml" : "latest"
+  }
+}
