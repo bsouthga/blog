@@ -1,2 +1,3 @@
 dist/*
 app/lib/vendor/*
+Makefile

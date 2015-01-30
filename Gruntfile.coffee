@@ -155,6 +155,7 @@ module.exports = (grunt) ->
    'grunt-contrib-cssmin'
    'grunt-browser-sync'
    'grunt-processhtml'
+   'grunt-scp'
   ]
 
   grunt.loadNpmTasks(pkg) for pkg in libs

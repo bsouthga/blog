@@ -8,6 +8,14 @@ h1#main-header {
   font-weight: normal;
 }
 
+h1,h2,h3,h4,h5 {
+  font-weight: normal;
+}
+
+section {
+  margin-top: 40px;
+}
+
 h2 {
   margin-top: 0px;
   padding-top:20px;
@@ -28,6 +36,7 @@ pre {
   margin-bottom: 40px;
   background-color: #fff;
   border : none;
+  border-left: 2px solid #ccc;
 }
 
 a {
@@ -73,14 +82,24 @@ a:hover {
   border-radius: 400px;
 }
 
+.viz-image {
+  max-width: 100%;
+  overflow: hidden;
+}
 
-.img-container img, #self-image img {
+.img-container {
+  max-height: 170px;
+  min-height: 170px;
+  display: block;
+}
+
+.img-container, #self-image img {
   border : 1px solid #aaa;
 }
 
 
-.img-container:not(:last-child) {
-  margin-bottom: 20px;
+a:not(:last-child) .img-container {
+  margin-bottom: 30px;
 }
 
 .date-cell {
@@ -109,7 +128,6 @@ a:hover {
   Sidebar 
 
 */
-
 
 #sidebar.affix li.active {
   border:0 #eee solid;
@@ -148,11 +166,6 @@ a:hover {
 
 
 
-
-
-
-
-
 /* 
   
   image black and white 
@@ -160,26 +173,15 @@ a:hover {
 */
 
 .bw {
-  -webkit-filter: grayscale(1);
-  -moz-filter: grayscale(1);
-  -ms-filter: grayscale(1);
-  filter: grayscale(1);
-
   -webkit-transition: all 0.4s ease-out; 
           transition: all 0.4s ease-out; 
 
 }
 
 .bw:hover {
-  -webkit-filter: grayscale(0);
-  -moz-filter: grayscale(0);
-  -ms-filter: grayscale(0);
-  filter: grayscale(0);
-
   -webkit-box-shadow: 7px 7px 15px 0px rgba(50, 50, 50, 0.45);
   -moz-box-shadow:    7px 7px 15px 0px rgba(50, 50, 50, 0.45);
   box-shadow:         7px 7px 15px 0px rgba(50, 50, 50, 0.45);
-
 }
 
 
