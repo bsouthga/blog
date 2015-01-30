@@ -1,25 +1,18 @@
 module.exports = (grunt) ->
 
+  require('load-grunt-tasks')(grunt)
+
   #
   # folder to copy distribution files to
   # when running 'grunt deploy'
   #
   deploy_path = '<deploy path>'
 
-  #
-  # Full build system steps
-  #
-  full_build = [
-    'coffee'        # 1 : compile coffeescript
-    'uglify:js'     # 3 : uglify urban js files
-    'cssmin'        # 4 : uglify urban css files
-    'processhtml'   # 6 : replace development <script> tags with dist
-    'htmlmin'       # 7 : minify html
-    'copy:dist'
-  ]
-
   # Register configuration
   grunt.initConfig
+    shell:
+      deploy:
+        command: 'bash deploy.sh'
     copy :
       setup :
         files : [
@@ -42,7 +35,7 @@ module.exports = (grunt) ->
             dest: 'app/lib/vendor/d3/'
           }
         ]
-      dist : 
+      dist :
         files : [
           {
             expand: true
@@ -145,21 +138,6 @@ module.exports = (grunt) ->
           ]
 
 
-  libs = [
-   'grunt-contrib-uglify'
-   'grunt-contrib-watch'
-   'grunt-contrib-coffee'
-   'grunt-contrib-concat'
-   'grunt-contrib-copy'
-   'grunt-contrib-htmlmin'
-   'grunt-contrib-cssmin'
-   'grunt-browser-sync'
-   'grunt-processhtml'
-   'grunt-scp'
-  ]
-
-  grunt.loadNpmTasks(pkg) for pkg in libs
-
   # Coffee compiling, uglifying and watching in order
   grunt.registerTask 'default', [
     'coffee'
@@ -173,4 +151,12 @@ module.exports = (grunt) ->
   ]
 
   # deploy distribution code
-  grunt.registerTask 'deploy', full_build
+  grunt.registerTask 'deploy', [
+    'coffee'
+    'uglify:js'
+    'cssmin'
+    'processhtml'
+    'htmlmin'
+    'copy:dist'
+    'shell:deploy'
+  ]

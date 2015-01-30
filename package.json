@@ -10,6 +10,8 @@
    "grunt-contrib-htmlmin" : "latest",
    "grunt-contrib-cssmin" : "latest",
    "grunt-browser-sync" : "latest",
-   "grunt-processhtml" : "latest"
+   "grunt-processhtml" : "latest",
+   "load-grunt-tasks" : "latest",
+   "grunt-shell" : "latest"
   }
 }
