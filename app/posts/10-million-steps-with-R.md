@@ -78,7 +78,7 @@ Now, as the appropriate amount of memory for the storage object has been declare
 
 Having determined a speedier method, I walked R for 10 million steps and plotted the matrix using `plot3d()` from [rgl](http://cran.r-project.org/web/packages/rgl/index.html). Here was the path color coded chronologically, starting at the origin (click for a gif, but beware - 17MB):
 
-[<img src="images/10millionSteps1.png"/>](images/10millionSteps1.gif)
+[<img src="/images/10millionSteps1.png"/>](images/10millionSteps1.gif)
 
 As this little project was all about making R work really hard, I decided to test the limits of my computer, as well as R's ability to deal with really big data. With the knowledge that R's [maximum vector length is (2<sup>31</sup> - 1) elements](http://stat.ethz.ch/R-manual/R-devel/library/base/html/Memory-limits.html), I calculated the longest possible walk R could take. Since a matrix is just a long vector of each column sequentially concatenated, the longest 3 dimensional walk possible is (2<sup>31</sup> - 1)/3 = 715,827,882 steps. 
 

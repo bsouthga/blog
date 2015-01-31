@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  {{{bootstrap_min_css}}}
+  <link href="/lib/katex/katex.min.css" rel="stylesheet">
+  {{{docco_css}}}
+  {{{main_css}}}
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>{{title}}</title>
+</head>
+<body>
+  <section class="container" id="main-container">
+    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
+      <a id="home" href="/">Ben Southgate</a>
+      <div id="rendered">{{{rendered}}}</div>
+    </div>
+    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 text-center">
+      <hr/>
+      <div>
+        <i class="fa fa-copyright"></i> <a href="/">Ben Southgate</a> | 2014
+      </div>
+    </div>
+  </section>
+  {{{jquery_min_js}}}
+  {{{bootstrap_min_js}}}
+  <script>
+    $('#rendered img').addClass('img-responsive')
+    $('#rendered h1').addClass('v-center')
+  </script>
+</body>
+</html>

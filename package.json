@@ -2,16 +2,22 @@
   "name": "coffeeviz",
   "version": "0.0.0",
   "dependencies": {
-   "grunt-contrib-uglify" : "latest",
-   "grunt-contrib-watch" : "latest",
-   "grunt-contrib-coffee" : "latest",
-   "grunt-contrib-concat" : "latest",
-   "grunt-contrib-copy" : "latest",
-   "grunt-contrib-htmlmin" : "latest",
-   "grunt-contrib-cssmin" : "latest",
-   "grunt-browser-sync" : "latest",
-   "grunt-processhtml" : "latest",
-   "load-grunt-tasks" : "latest",
-   "grunt-shell" : "latest"
+    "express": "^4.11.1",
+    "grunt-browser-sync": "latest",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-htmlmin": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-processhtml": "latest",
+    "grunt-shell": "latest",
+    "handlebars": "^2.0.0",
+    "highlight.js": "^8.4.0",
+    "katex": "^0.1.1",
+    "load-grunt-tasks": "latest",
+    "lodash": "^3.0.1",
+    "remarkable": "^1.6.0"
   }
 }
