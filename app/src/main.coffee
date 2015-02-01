@@ -1,11 +1,5 @@
 $ ->
 
-  $('#sidebar').affix({
-    offset: {
-      top: 0
-    }
-  })
-
   format = (date) ->
     formattedDate = new Date(date)
     d = formattedDate.getDate()
@@ -67,4 +61,10 @@ $ ->
 
 
     $("#content").scrollspy()
+    
+    $('#sidebar').affix({
+      offset: {
+        top: 0
+      }
+    })
 

@@ -44,8 +44,7 @@ var posts = fs.readdirSync('./posts/')
       './posts/' + p, "utf-8"
     );
     return p_obj;
-  });
-
+  }, {});
 
 var app = express();
 
