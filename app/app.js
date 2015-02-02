@@ -5,8 +5,8 @@ var express = require('express'),
     fs = require('fs'),
     _ = require('lodash'),
     handlebars = require('handlebars'),
+    minify = require('html-minifier').minify,
     site_root = __dirname;
-
 
 
 var post_template = handlebars.compile(
@@ -37,14 +37,31 @@ var vendor = [
 
 
 
-// read markdown into memory
+// prepare posts for serving
 var posts = fs.readdirSync('./posts/')
   .reduce(function(p_obj, p) {
-    p_obj[p.replace('.md', "")] = fs.readFileSync(
+
+    // read in markdown source
+    var md = fs.readFileSync(
       './posts/' + p, "utf-8"
     );
+
+    // add vendor scripts to options
+    var opts = _.extend({
+      rendered : parse(md),
+      title : "Test"
+    }, vendor);
+
+    // compile template and minify
+    p_obj[p.replace('.md', "")] = minify(post_template(opts), {
+      "minifyJS" : true,
+      "minifyCSS" : true,
+      "collapseWhitespace" : true
+    });
+
     return p_obj;
   }, {});
+
 
 var app = express();
 
@@ -66,15 +83,7 @@ app.get('/lib/*', function (req, res) {
 app.get('/p/*', function(req, res) {
   var post = posts[req.url.slice(3)];
   if (post) {
-
-    var opts = _.extend({
-      rendered : parse(post),
-      title : "Test"
-    }, vendor);
-
-    var compiled = post_template(opts)
-
-    res.send(compiled);
+    res.send(post);
   } else {
     res.send('Dunno any post by that name...');
   }

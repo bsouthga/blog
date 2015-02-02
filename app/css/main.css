@@ -37,6 +37,7 @@ pre {
   background-color: #fff;
   border : none;
   border-left: 2px solid #ccc;
+  border-radius: 0px;
 }
 
 a {
