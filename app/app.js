@@ -80,15 +80,23 @@ app.get('/lib/*', function (req, res) {
 });
 
 // blog post route
-app.get('/p/*', function(req, res) {
-  var post = posts[req.url.slice(3)];
+app.get('/p/:id', function(req, res) {
+  var post = posts[req.params.id];
   if (post) {
     res.send(post);
   } else {
-    res.send('Dunno any post by that name...');
+    res.redirect('/404')
   }
 })
 
+app.get('/404', function(req, res) {
+  res.status(404);
+  res.send('<html><body>404</body></html>')
+})
+
+app.use(function(req, res, next) {
+  res.redirect('/404');
+});
 
 var server = app.listen(3000, function () {
 
@@ -98,4 +106,6 @@ var server = app.listen(3000, function () {
   console.log('Example app listening at http://%s:%s', host, port)
 
 })
+
+
 
