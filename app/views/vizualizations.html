@@ -1,0 +1,12 @@
+<section id="vizualization">
+
+  <h2>Vizualization</h2>
+
+  {{#each viz}}
+    <a href="{{this.url}}">
+      <div class="viz-title">{{this.title}}</div>
+      <div class="img-container bw" style="background-image:url({{this.image}});"></div>
+    </a>
+  {{/each}}
+
+</section>

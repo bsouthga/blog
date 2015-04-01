@@ -21,14 +21,14 @@ Practically, within Python, I sometimes want to pass these colors / vectors as h
 def hex_to_RGB(hex):
   ''' "#FFFFFF" -> [255,255,255] '''
   # Pass 16 to the integer function for change of base
-  return [int(hex[i:i+2], 16) for i in range(1,6,2)] 
+  return [int(hex[i:i+2], 16) for i in range(1,6,2)]
 
 
 def RGB_to_hex(RGB):
   ''' [255,255,255] -> "#FFFFFF" '''
   # Components need to be integers for hex to make sense
   RGB = [int(x) for x in RGB]
-  return "#"+"".join(["0{0:x}".format(v) if v < 16 else 
+  return "#"+"".join(["0{0:x}".format(v) if v < 16 else
             "{0:x}".format(v) for v in RGB])
 ```
 
@@ -52,8 +52,8 @@ In Python, I implemented this as a function which, given two hex imputs, returns
 
 ```language-python
 def color_dict(gradient):
-  ''' Takes in a list of RGB sub-lists and returns dictionary of 
-    colors in RGB and hex form for use in a graphing function 
+  ''' Takes in a list of RGB sub-lists and returns dictionary of
+    colors in RGB and hex form for use in a graphing function
     defined later on '''
   return {"hex":[RGB_to_hex(RGB) for RGB in gradient],
       "r":[RGB[0] for RGB in gradient],
@@ -62,9 +62,9 @@ def color_dict(gradient):
 
 
 def linear_gradient(start_hex, finish_hex="#FFFFFF", n=10):
-  ''' returns a gradient list of (n) colors between 
-    two hex colors. start_hex and finish_hex 
-    should be the full six-digit color string, 
+  ''' returns a gradient list of (n) colors between
+    two hex colors. start_hex and finish_hex
+    should be the full six-digit color string,
     inlcuding the number sign ("#FFFFFF") '''
   # Starting and ending colors in RGB form
   s = hex_to_RGB(start_hex)
@@ -74,8 +74,8 @@ def linear_gradient(start_hex, finish_hex="#FFFFFF", n=10):
   # Calcuate a color at each evenly spaced value of t from 1 to n
   for t in range(1, n):
     # Interpolate RGB vector for color at the current value of t
-    curr_vector = [ 
-      int(s[j] + (float(t)/(n-1))*(f[j]-s[j])) 
+    curr_vector = [
+      int(s[j] + (float(t)/(n-1))*(f[j]-s[j]))
       for j in range(3)
     ]
     # Add it to our list of output colors
@@ -86,7 +86,7 @@ def linear_gradient(start_hex, finish_hex="#FFFFFF", n=10):
 
 Outputting the RGB components as points in 3D space, and coloring the points with their corresponding hex notation gives us something like this (gradient ranges from `#4682B4` to `#FFB347`):
 
-<img src="/images/blueorange.png"/>
+<img src="blueorange.png"/>
 
 ## Multiple Linear Gradients <span>&#8658;</span> Polylinear Interpolation
 
@@ -97,11 +97,11 @@ While one linear gradient is fun, multiple linear gradients are more fun. Taking
 from numpy import random as rnd
 
 def rand_hex_color(num=1):
-  ''' Generate random hex colors, default is one, 
-      returning a string. If num is greater than 
+  ''' Generate random hex colors, default is one,
+      returning a string. If num is greater than
       1, an array of strings is returned. '''
   colors = [
-    RGB_to_hex([x*255 for x in rnd.rand(3)]) 
+    RGB_to_hex([x*255 for x in rnd.rand(3)])
     for i in range(num)
   ]
   if num == 1:
@@ -111,14 +111,14 @@ def rand_hex_color(num=1):
 
 
 def polylinear_gradient(colors, n):
-  ''' returns a list of colors forming linear gradients between 
-      all sequential pairs of colors. "n" specifies the total 
+  ''' returns a list of colors forming linear gradients between
+      all sequential pairs of colors. "n" specifies the total
       number of desired output colors '''
   # The number of colors per individual linear gradient
   n_out = int(float(n) / (len(colors) - 1))
   # returns dictionary defined by color_dict()
-  gradient_dict = linear_gradient(colors[0], colors[1], n_out) 
-  
+  gradient_dict = linear_gradient(colors[0], colors[1], n_out)
+
   if len(colors) > 1:
     for col in range(1, len(colors) - 1):
       next = linear_gradient(colors[col], colors[col+1], n_out)
@@ -131,7 +131,7 @@ def polylinear_gradient(colors, n):
 
 This means we can pick a few colors we want to our data to "evolve through", and get back a series of corresponding interpolated colors. Below is an example of linear gradients running through 5 different random colors, with 50 total interpolated colors.
 
-<img src="/images/polyline.png"/>
+<img src="polyline.png"/>
 
 While this serves the purpose of providing a gradient through multiple colors, it does so in a sort of jagged, inelegant way. What would be better is a smooth evolution accross the colors, with each input color providing various amounts of influence as we move through the gradient. For this, we can turn to Bezier Curves.
 
@@ -146,8 +146,8 @@ While I will leave the denser mathematical description of Bezier Curves to [Wiki
   {B}(t) = \sum_{i=0}^{n}\left({b}_{i,n}(t)\vec{c}_i \right) \qquad {b}_{i,n}(t) = \left(\frac{n!}{i!(n-i)!}\right)t^i(1-t)^{n-i}
 @@@
 
-@@@ 
-  \displaystyle 
+@@@
+  \displaystyle
   t\in [0,1] \quad\quad i\in \{x | x \in {Z}, 0 \leq x \leq n\}
 @@@
 
@@ -176,45 +176,45 @@ def bernstein(t,n,i):
 
 
 def bezier_gradient(colors, n_out=100):
-  ''' Returns a "bezier gradient" dictionary 
-      using a given list of colors as control 
-      points. Dictionary also contains control 
+  ''' Returns a "bezier gradient" dictionary
+      using a given list of colors as control
+      points. Dictionary also contains control
       colors/points. '''
   # RGB vectors for each color, use as control points
   RGB_list = [hex_to_RGB(color) for color in colors]
   n = len(RGB_list) - 1
 
   def bezier_interp(t):
-    ''' Define an interpolation function 
+    ''' Define an interpolation function
         for this specific curve'''
-    # List of all summands 
-    summands = [ 
-      map(lambda x: int(bernstein(t,n,i)*x), c) 
+    # List of all summands
+    summands = [
+      map(lambda x: int(bernstein(t,n,i)*x), c)
       for i, c in enumerate(RGB_list)
-    ] 
+    ]
     # Output color
     out = [0,0,0]
-    # Add components of each summand together 
+    # Add components of each summand together
     for vector in summands:
-      for c in range(3):                
+      for c in range(3):
         out[c] += vector[c]
 
     return out
 
   gradient = [
-    bezier_interp(float(t)/(n_out-1)) 
+    bezier_interp(float(t)/(n_out-1))
     for t in range(n_out)
   ]
   # Return all points requested for gradient
   return {
-    "gradient": color_dict(gradient), 
+    "gradient": color_dict(gradient),
     "control": color_dict(RGB_list)
   }
 ```
 
 The result of this more technical gradient calculation is a smoother range, influenced by its given control colors. The following example takes in 3 control colors, but the above function can handle Bezier Curves of arbitrary degree.
 
-<img src="/images/bezier_example.png"/>
+<img src="bezier_example.png"/>
 
 ## Matplotlib Plotting Stuff
 
@@ -223,11 +223,11 @@ Finally, here is the code I used to plot the points generated by the various gra
 ```language-python
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-  
-def plot_gradient_series(color_dict, filename, 
+
+def plot_gradient_series(color_dict, filename,
              pointsize=100, control_points=None):
-  ''' Take a dictionary containing the color 
-      gradient in RBG and hex form and plot 
+  ''' Take a dictionary containing the color
+      gradient in RBG and hex form and plot
       it to a 3D matplotlib device '''
 
   fig = plt.figure()
@@ -236,20 +236,20 @@ def plot_gradient_series(color_dict, filename,
   ycol = color_dict["g"]
   zcol = color_dict["b"]
 
-  # We can pass a vector of colors 
+  # We can pass a vector of colors
   # corresponding to each point
-  ax.scatter(xcol, ycol, zcol, 
+  ax.scatter(xcol, ycol, zcol,
              c=color_dict["hex"], s=pointsize)
 
-  # If bezier control points passed to function, 
+  # If bezier control points passed to function,
   # plot along with curve
   if control_points != None:
     xcntl = control_points["r"]
     ycntl = control_points["g"]
     zcntl = control_points["b"]
-    ax.scatter( xcntl, ycntl, zcntl, 
-                c=control_points["hex"], 
-                s=pointsize, marker='s')       
+    ax.scatter( xcntl, ycntl, zcntl,
+                c=control_points["hex"],
+                s=pointsize, marker='s')
 
   ax.set_xlabel('Red Value')
   ax.set_ylabel('Green Value')
@@ -263,7 +263,7 @@ def plot_gradient_series(color_dict, filename,
   plt.savefig(filename + ".svg")
   ax.view_init(elev=15, azim=28)
   plt.savefig(filename + "_view_2.svg")
-  
+
   # Show plot for testing
   plt.show()
 ```

@@ -1,0 +1,163 @@
+/*
+  global styles for blog
+  @bsouthga
+*/
+
+
+html, body {
+  font-family: 'Computer Modern Serif';
+  position: relative;
+  line-height: 1.5em;
+}
+
+p {
+  text-align: justify;
+}
+
+a {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #000;
+}
+
+pre {
+  margin: 50px auto;
+  font-size: 10px;
+  background-color: #fff;
+  border: none;
+  border-left: 3px solid #ddd;
+  margin-left: -23px;
+  padding-left: 20px;
+  border-radius: 0px;
+}
+
+code {
+  color: #000;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+#rendered h2 {
+  font-size: 24px;
+  margin-top: 70px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+a:not(:last-child) .img-container {
+  margin-bottom: 30px;
+}
+
+.bw {
+    -webkit-transition: -webkit-box-shadow .4s ease-out;
+    transition: box-shadow .4s ease-out;
+}
+
+.bw:hover {
+    -webkit-box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
+    -moz-box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
+    box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
+}
+
+
+.pub blockquote {
+  margin-top: 10px;
+  font-size: 11px;
+  text-indent: 15px;
+  border-left: 3px solid #ddd;
+  margin-left: -23px;
+  padding-left: 20px;
+}
+
+.pub .pub-link {
+  font-style: italic;
+}
+
+.nav h4 {
+  padding-left: 15px;
+}
+
+.nav li.active {
+  background-color: #eee;
+}
+
+.blog-footer {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.display-math {
+  margin: 40px auto;
+}
+
+.inline-image {
+  display: block;
+  width: 60%;
+  margin: 50px auto;
+}
+
+.img-container {
+  height: 170px;
+  display: block;
+}
+
+#main-container {
+  margin-top: 100px;
+}
+
+#sidebar {
+  padding-top: 30px;
+  font-size: 12px;
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+#sidebar a {
+  text-decoration: none;
+}
+
+#self-image {
+  max-width: 220px;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+#self-image img, .img-container {
+  border: 1px solid #aaa;
+}
+
+#self-image img {
+  border-radius: 400px;
+}
+
+#media {
+  width: 100%;
+  text-align: center;
+}
+
+#media a {
+  text-decoration: none;
+}
+
+@media(max-width: 992px) {
+  #sidenav {
+    display: none;
+  }
+}
+
+@media(max-width: 768px) {
+  .inline-image {
+    width: 100%;
+  }
+}

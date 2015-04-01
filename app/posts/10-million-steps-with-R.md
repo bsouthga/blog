@@ -7,7 +7,7 @@
 
 I have a particular fascination with code that is computationally intense, yet very dense in terms of lines. A sort of David / Goliath kinda thing, where a few choice keystrokes can take hours to process. Additionally, when the computation can result in aesthetically pleasing output, like a 3D plot of a random walk using R's [`rgl`](http://cran.r-project.org/web/packages/rgl/index.html) package, it's hard to resist tapping away on the keyboard for a bit.
 
-One simple and easy example of this sort of David-script is random walk data generation. With a bunch of free time this Labor-Day Weekend, I decided to take R for a long walk. Here is the code for a single step: 
+One simple and easy example of this sort of David-script is random walk data generation. With a bunch of free time this Labor-Day Weekend, I decided to take R for a long walk. Here is the code for a single step:
 
 ```language-r
 # Take a step, given a previous position
@@ -63,24 +63,24 @@ Now, as the appropriate amount of memory for the storage object has been declare
 
 ```language-r
 > steps <- 100000
- 
+
 # Using an unbounded data frame
 > system.time(path <- walk(steps))
-    user   system  elapsed 
-2257.740   85.384 2337.593 
- 
+    user   system  elapsed
+2257.740   85.384 2337.593
+
 # Using a defined matrix
 > system.time(path <- walk(steps))
-   user  system elapsed 
-  1.050   0.005   1.059 
+   user  system elapsed
+  1.050   0.005   1.059
 ```
 
 
 Having determined a speedier method, I walked R for 10 million steps and plotted the matrix using `plot3d()` from [rgl](http://cran.r-project.org/web/packages/rgl/index.html). Here was the path color coded chronologically, starting at the origin (click for a gif, but beware - 17MB):
 
-[<img src="/images/10millionSteps1.png"/>](/images/10millionSteps1.gif)
+[<img src="10millionSteps1.png"/>](/static/images/10millionSteps1.gif)
 
-As this little project was all about making R work really hard, I decided to test the limits of my computer, as well as R's ability to deal with really big data. With the knowledge that R's [maximum vector length is (2<sup>31</sup> - 1) elements](http://stat.ethz.ch/R-manual/R-devel/library/base/html/Memory-limits.html), I calculated the longest possible walk R could take. Since a matrix is just a long vector of each column sequentially concatenated, the longest 3 dimensional walk possible is (2<sup>31</sup> - 1)/3 = 715,827,882 steps. 
+As this little project was all about making R work really hard, I decided to test the limits of my computer, as well as R's ability to deal with really big data. With the knowledge that R's [maximum vector length is (2<sup>31</sup> - 1) elements](http://stat.ethz.ch/R-manual/R-devel/library/base/html/Memory-limits.html), I calculated the longest possible walk R could take. Since a matrix is just a long vector of each column sequentially concatenated, the longest 3 dimensional walk possible is (2<sup>31</sup> - 1)/3 = 715,827,882 steps.
 
 After running the long(est) walk overnight (with around 3 hours of processing time) R saved a max-length walk dataset. However, my computer understandably refused to plot it, so I'll leave it [here for anyone with interest and serious computational resources](https://mega.co.nz/#!H8xmXKLA!alemsUbukM3L1gY9KAsfXll-n2ZE1f1i-Rb14g-C94E).
 

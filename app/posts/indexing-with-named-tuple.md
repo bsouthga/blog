@@ -1,4 +1,4 @@
-# indexing with `namedtuple`
+# Indexing with `namedtuple`
 
 
 ### A basic class for an easily subsetable dictionary using Python's [`namedtuple`](http://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields) as keys for multidimensional indexing (01.04.14)

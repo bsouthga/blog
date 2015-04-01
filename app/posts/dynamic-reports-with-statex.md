@@ -5,7 +5,7 @@
 
 As a big fan of LaTeX and daily slave to Stata, I've put a little thought into finding easy ways to bring the aesthetics and clarity of the former to the output of the later. In particular, there are two great Stata modules (`estout` and `texdoc`, both available through [SSC](http://econpapers.repec.org/software/bocbocode/)) which, when combined with Stata's shell interface, make it easy to compile professional and organized output. In this post, I present a sample (OSX oriented) code structure for a single .do file which conducts analysis, generates TeX source code, and then compiles that source to pdf.
 
-<img src="/images/better.png">
+<img src="better.png">
 
 Recently, I've been working on a few projects for [Urban](http://urban.org) which involve constructing large multivariate models. The process includes constant tweaking of various parameters such as sample restrictions and control variables. As a project progresses, keeping track of these changes can be difficult. Keeping track of the evolving components and outcomes of a model as it is modified can make the construction process simpler. As shown here, this can be easily done by creating a LaTeX output document upon each run of the analysis do file.
 
@@ -14,7 +14,7 @@ Recently, I've been working on a few projects for [Urban](http://urban.org) whic
 
 One way to concisely illustrate coefficient and standard error changes during model construction is through a table like this :
 
-<img src="/images/extable.png">
+<img src="extable.png">
 
 which shows a few simple linear regressions of automobile price on various controls, and is produced using the [`tabular` environment found in LaTeX](http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment). While the end product as shown above gives you a clear idea of how the influence of independent variables change when others are included, producing this table is normally an involved process.
 
@@ -22,7 +22,7 @@ As the nifty little graphic below abstractly illustrates, producing, inserting, 
 
 However, as each call of `esttab` only produces the stand alone table, documents with multiple models or graphics need a master LaTeX document, which contains the preamble, and the required `\begin{document}` and `\end{document}` statements. The *second* step below illustrates the necessity of importing the individual analytical graphics into a master source file, which then must be compiled using pdflatex or some variant (the *third* and final step)
 
-<img src="/images/statex.png">
+<img src="statex.png">
 
 After using `esttab` for a while, I began to find this multi-stage task a little bit of a chore, and set out to learn how best to streamline the process. I first looked for a method to eliminate the need for a separate master LaTeX source file. 
 

@@ -1,0 +1,17 @@
+<section id="bibliography">
+  <h2>Bibliography</h2>
+  <div id="pubs">
+    {{#each pubs}}
+      <div class="pub">
+        <span class="author">{{this.authors}}, </span>
+        <a class="pub-link" href="{{this.url}}">{{this.title}}</a>
+        <span class="publisher">
+          &nbsp;{{this.org}}
+        </span>
+        <blockquote>
+          {{this.abstract}}
+        </blockquote>
+      </div>
+    {{/each}}
+  </div>
+</section>
