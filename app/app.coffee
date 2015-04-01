@@ -74,7 +74,10 @@ app.get "/posts/:id", (req, res) ->
 # file not found template
 app.get "/404", (req, res) ->
   res.status 404
-  res.send notfound {}
+  res.send main {
+    content : notfound {}
+    date : new Date().getUTCFullYear()
+  }
 
 # static folder for client side scripts
 app.use "/static", express.static "#{__dirname}/static"
