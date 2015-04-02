@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/static/fonts/Serif/cmun-serif.css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/katex/katex.min.css">
     <link rel="stylesheet" href="/static/bootstrap-3.3.4-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/font-awesome-4.3.0/css/font-awesome.min.css">
@@ -16,7 +16,6 @@
     <section class="container" id="main-container">
     <div class="col-md-2" id="sidenav">
       <ul class="nav nav-stacked" id="sidebar">
-        <h4>Ben Southgate</h4>
         <li><a href="/" class="main-nav-item">About</a></li>
         <li><a href="/vizualization" class="main-nav-item">Vizualization</a></li>
         <li><a href="/posts" class="main-nav-item">Thoughts</a></li>
@@ -35,23 +34,24 @@
         </div>
       </div>
     </section>
+    <div id="mobile-nav"><i class="fa fa-bars"></i></div>
     <script src="/static/jquery/jquery-1.11.2.min.js"></script>
     <script src="/static/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
     <script>
       $(function() {
 
-        var sb = $("#sidebar");
-        var sn = $("#sidenav");
-        var rs = function() { sb.width(sn.width()); };
+        var $sb = $("#sidebar");
+        var $sn = $("#sidenav");
+        var rs = function() { $sb.width($sn.width()); };
 
-        sb.affix({
-          offset: {
-            top: 0
-          }
-        });
+        $sb.affix({ offset: { top: 0 } });
 
         rs();
         $(window).resize(rs);
+
+        $("#mobile-nav").click(function() {
+          $sn.toggleClass('mobile-show');
+        });
 
       })
     </script>

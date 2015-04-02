@@ -5,8 +5,7 @@
 
 
 html, body {
-  font-family: 'Computer Modern Serif';
-  position: relative;
+  font-family: 'Raleway';
   line-height: 1.5em;
 }
 
@@ -36,6 +35,7 @@ pre {
 
 code {
   color: #000;
+  background-color: #eee;
 }
 
 h1 {
@@ -60,11 +60,15 @@ a:not(:last-child) .img-container {
 }
 
 .bw {
-    -webkit-transition: -webkit-box-shadow .4s ease-out;
-    transition: box-shadow .4s ease-out;
+    -webkit-transition: -webkit-box-shadow .4s ease-out, -webkit-filter .4s ease-out;
+    transition: box-shadow .4s ease-out, filter .4s ease-out;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 .bw:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
     -webkit-box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
     -moz-box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
     box-shadow: 7px 7px 15px 0 rgba(50,50,50,.45);
@@ -119,8 +123,6 @@ a:not(:last-child) .img-container {
 #sidebar {
   padding-top: 30px;
   font-size: 12px;
-  max-height: 600px;
-  overflow-y: scroll;
 }
 
 #sidebar a {
@@ -150,10 +152,52 @@ a:not(:last-child) .img-container {
   text-decoration: none;
 }
 
-@media(max-width: 992px) {
+#mobile-nav {
+  display: none;
+}
+
+@media(max-width: 991px) {
+
   #sidenav {
+    z-index: 10;
     display: none;
+    position: fixed;
+    top: 60px;
+    right: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #eee;
+    background-color: #fff;
   }
+
+  #sidenav.mobile-show {
+    display: block;
+  }
+
+  #sidebar {
+    padding-top: 0px;
+  }
+
+  #main-container {
+    margin-top: 20px;
+  }
+
+  #mobile-nav {
+    display: block;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.8);
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+
+  .affix {
+      position: static;
+  }
+
 }
 
 @media(max-width: 768px) {
