@@ -169,6 +169,11 @@
       "image": "/static/images/funnyfed.png"
     },
     {
+      "url" : "http://bsouthga.github.io/d3-exploder/",
+      "title": "d3.geo.exploder",
+      "image": "/static/images/d3-geo-exploder.png"
+    },
+    {
       "url" : "http://datatools.urban.org/features/mapping-americas-futures",
       "title" : "Mapping America's Futures",
       "image" : "/static/images/MAF.png"
