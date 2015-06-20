@@ -1,17 +1,30 @@
 <section id="bibliography">
   <h2>Bibliography</h2>
-  <div id="pubs">
+  <ul id="pubs">
     {{#each pubs}}
-      <div class="pub">
+      <li class="pub">
         <span class="author">{{this.authors}}, </span>
         <a class="pub-link" href="{{this.url}}">{{this.title}}</a>
         <span class="publisher">
           &nbsp;{{this.org}}
         </span>
-        <blockquote>
+        <span class="date">&nbsp;{{this.date}}</span>
+        <span class="glyphicon glyphicon-plus expand" aria-hidden="true"></span>
+        <blockquote class="abstract hidden">
           {{this.abstract}}
         </blockquote>
-      </div>
+      </li>
     {{/each}}
-  </div>
+  </ul>
+  <script>
+    $(function() {
+      $('#bibliography .pub .expand').click(function() {
+        $(this)
+          .toggleClass('glyphicon-plus')
+          .toggleClass('glyphicon-minus')
+          .siblings('blockquote')
+          .toggleClass('hidden');
+      });
+    });
+  </script>
 </section>

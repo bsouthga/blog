@@ -116,6 +116,19 @@ a:not(:last-child) .img-container {
   display: block;
 }
 
+.expand {
+  font-size: 8px;
+}
+
+.expand:hover {
+  cursor: pointer;
+  font-size: 10px;
+}
+
+#bibliography ul li {
+  margin-bottom: 20px;
+}
+
 #main-container {
   margin-top: 100px;
 }

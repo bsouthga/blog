@@ -36,6 +36,60 @@
         "title": "LOOP and the Internet Marketplace"
       },
       {
+        "abstract": "To address chronic underfunding problems, the Louisiana state legislature replaced the traditional pension for state government employees with a cash balance plan, but the courts invalidated the measure. This report assesses how employees would fare under that reform. Results show that a slight majority would do worse in the cash balance plan than the existing plan, but about three-fourths would fare better under an alternative reform that extends Social Security to state employees and provides a smaller cash balance plan.",
+        "authors": "Owen Haaga, Richard W. Johnson, and Benjamin G. Southgate",
+        "date": "(06.16.15)",
+        "url": "http://www.urban.org/research/publication/state-public-pension-reform-louisiana",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "The State of Public Pension Reform in Louisiana"
+      },
+      {
+        "abstract": "This brief, drawn from a longer report, shows how state and local government employees in Louisiana would likely fare in a cash balance retirement plan that was enacted by the state legislature but invalidated by the courts. Results show that a slight majority of state employees would do worse in the cash balance plan than the existing traditional defined benefit plan. However, about three-fourths would fare better under an alternative reform that extends Social Security to state employees and provides a smaller cash balance plan.",
+        "authors": "Owen Haaga, Richard W. Johnson, and Benjamin G. Southgate",
+        "date": "(06.04.15)",
+        "url": "http://www.urban.org/research/publication/cash-balance-plan-right-choice-louisiana-state-employees",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "Is a Cash Balance Plan the Right Choice for Louisiana State Employees?"
+      },
+      {
+        "abstract": "Between 2002 and 2012, contributions by New York’s state and local governments to public employee retirement plans rose more than 500 percent, squeezing budgets for municipalities across the state. This surge was driven primarily by investment losses as well as the plan’s practice of adjusting government contributions to offset unexpected investment gains and losses. The plan benefit structure was not the culprit. Although current retirees from New York’s state and local governments receive more generous pensions than government employees in most states, recent cutbacks have significantly reduced pensions for new hires. Further benefit cuts do not seem warranted.",
+        "authors": "Richard W. Johnson, Owen Haaga, and Benjamin G. Southgate",
+        "date": "(06.04.15)",
+        "url": "http://www.urban.org/research/publication/why-have-government-contributions-new-york-pension-plans-soared-2010",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "Why Have Government Contributions to New York Pension Plans Soared since 2010?"
+      },
+      {
+        "abstract": "Financial problems have led to significant pension cuts for Illinois public school teachers. An alternative approach would be to replace the existing traditional defined benefit plan with a cash balance plan, which combines features of 401(k)-type plans and traditional pensions. Our simulations show that 72 percent of Illinois public school teachers hired before 2011—and 56 percent of those with five or more years of completed service—would fare better in the simulated cash balance plan than the existing plan, even though the cash balance plan would be no more costly to taxpayers.",
+        "authors": "Richard W. Johnson and Benjamin G. Southgate",
+        "date": "(04.06.15)",
+        "url": "http://www.urban.org/research/publication/could-cash-balance-plan-benefit-illinois-public-school-teachers",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "Could a Cash Balance Plan Benefit Illinois Public School Teachers?"
+      },
+      {
+        "abstract": "California teacher pensions vary widely depending on when teachers begin their careers and how long they teach. Teachers who spend their entire careers in the plan receive large pensions. However, teachers who join the plan at relatively young ages and spend less than full careers in the classroom accumulate few retirement benefits, and those benefits are often worth less than the value of the teachers’ required plan contributions. As policymakers address the California teacher pension plan’s funding problems, they should consider altering the plan’s benefit formula to more equitably distribute pension benefits across the workforce.",
+        "authors": "Richard W. Johnson and Benjamin G. Southgate",
+        "date": "(04.06.15)",
+        "url": "http://www.urban.org/research/publication/are-california-teacher-pensions-distributed-fairly",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "Are California Teacher Pensions Distributed Fairly?"
+      },
+      {
+        "abstract": "The California State Teachers’ Retirement System has been grossly underfunded for the past decade. State policymakers have responded by cutting plan benefits for new hires and raising teachers’ required plan contributions. These changes, however, have undermined teachers’ retirement income security. Only 35 percent of new hires will receive pensions worth more than the value of their required plan contributions. Most new hires would have better financial outcomes if they could opt out of the mandatory retirement plan and invest their contributions elsewhere. Additional plan reforms should focus on changing the benefit formula to distribute pensions more equitably across the workforce.",
+        "authors": "Richard W. Johnson and Benjamin G. Southgate",
+        "date": "(12.05.14)",
+        "url": "http://www.urban.org/research/publication/can-california-teacher-pensions-be-distributed-more-fairly",
+        "org": "Urban Institute",
+        "org_url": "http://www.urban.org",
+        "title": "Can California Teacher Pensions Be Distributed More Fairly?"
+      },
+      {
         "abstract": "The financial problems afflicting Illinois\u2019s teacher pension plan have grabbed headlines. An equally important problem, though underappreciated, is that relatively few teachers benefit much from the plan. Long-serving teachers receive generous pensions, but only 18 percent of teachers remain employed for at least 25 years. Only 24 percent of those who complete at least five years of service receive pensions worth more than the value of their required plan contributions. Alternative plan designs, such as cash balance plans, could distribute benefits more equitably and put more teachers on a path to a financially secure retirement.",
         "authors": "Richard W. Johnson and Benjamin G. Southgate",
         "date": "(07.30.14)",
@@ -109,6 +163,11 @@
       }
   ],
   "viz": [
+    {
+      "url" : "http://www.theatlantic.com/business/archive/2015/03/laughter-in-fed-transcripts/388027/",
+      "title": "Laughing All the Way to the Crash",
+      "image": "/static/images/funnyfed.png"
+    },
     {
       "url" : "http://datatools.urban.org/features/mapping-americas-futures",
       "title" : "Mapping America's Futures",
