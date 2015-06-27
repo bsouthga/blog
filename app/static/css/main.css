@@ -169,6 +169,17 @@ a:not(:last-child) .img-container {
   display: none;
 }
 
+.github-link {
+  float: right;
+  text-decoration: none;
+  font-size: 14pt;
+}
+
+.viz {
+  margin-bottom: 25px;
+}
+
+
 @media(max-width: 991px) {
 
   #sidenav {

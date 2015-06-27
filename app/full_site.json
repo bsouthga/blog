@@ -25,6 +25,75 @@
       "filename" : "10-million-steps-with-R"
     }
   ],
+  "viz": [
+    {
+      "url" : "http://bsouthga.github.io/atlantic-income-charts/",
+      "title": "Income + College Majors",
+      "github": "https://github.com/bsouthga/atlantic-income-charts",
+      "image": "/static/images/atlantic-income.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/average-wages/",
+      "title": "Wages and Employment Explorer",
+      "github": "https://github.com/UI-Research/RockefellerWages",
+      "image": "/static/images/wages-and-employment.png"
+    },
+    {
+      "url": "http://datatools.urban.org/features/childrens-health-coverage-at-risk/iframe_test.html",
+      "github": "https://github.com/UrbanInstitute/child-insurance",
+      "title": "Children’s Coverage: What Lies Ahead?",
+      "image": "/static/images/child-insurance.png"
+    },
+    {
+      "url" : "http://www.theatlantic.com/business/archive/2015/03/laughter-in-fed-transcripts/388027/",
+      "title": "Laughing All the Way to the Crash",
+      "github": "https://github.com/bsouthga/funnyfed",
+      "image": "/static/images/funnyfed.png"
+    },
+    {
+      "url" : "http://bsouthga.github.io/d3-exploder/",
+      "title": "d3.geo.exploder",
+      "github": "https://github.com/bsouthga/d3-exploder",
+      "image": "/static/images/d3-geo-exploder.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/mapping-americas-futures",
+      "github": "https://github.com/UrbanInstitute/mapping-americas-futures",
+      "title" : "Mapping America's Futures",
+      "image" : "/static/images/MAF.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/build-your-own-pension",
+      "github": "https://github.com/UrbanInstitute/build-your-own-pension",
+      "title" : "Build Your Own Pension Plan",
+      "image" : "/static/images/build-your-own-pension.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/Features/domestic-violence-data/dataviz/",
+      "title" : "Vizualizing Gaps in Domestic Violence Data",
+      "image" : "/static/images/datadive.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/bsouthga/crimeplot/",
+      "title" : "Crimes in US Cities",
+      "image" : "/static/images/crimeplot.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/everydayviolence/",
+      "title" : "Gun Violence in Washington DC",
+      "image" : "/static/images/everydayviolence.png"
+    },
+    {
+      "url" : "http://blog.metrotrends.org/2014/08/higher-minimum-wages-improve-economic-well-being-dc/",
+      "title" : "Minimum Wage Meta-analysis",
+      "image" : "/static/images/metaanalysis.png"
+    },
+    {
+      "url" : "http://datatools.urban.org/features/slepp/",
+      "title" : "SLEPP Report Card",
+      "image" : "/static/images/slepp.png"
+    }
+  ],
   "pubs": [
       {
         "abstract": "This paper examines 12,887 individual eBay, english-style, completed auctions of the Otterbox Defender iPhone 4/4S cell-phone case over a 90 day period, with sales and purchases occuring in both the USA and Canada, all collected from Terapeak.com. Findings suggest quick reversion of cross-border prices to parity. Specifically the half-life of deviations is estimated to be 10.34 hours. With this evidence in mind, eBay appears ever closer to an Economist\u2019s ideal marketplace, with limited price friction, large numbers of informed buyers and sellers, and low barriers to entry.",
@@ -161,52 +230,5 @@
         "org_url": "http://www.urban.org",
         "title": "Labor Force Statistics on Older Americans, Third Quarter 2013"
       }
-  ],
-  "viz": [
-    {
-      "url" : "http://www.theatlantic.com/business/archive/2015/03/laughter-in-fed-transcripts/388027/",
-      "title": "Laughing All the Way to the Crash",
-      "image": "/static/images/funnyfed.png"
-    },
-    {
-      "url" : "http://bsouthga.github.io/d3-exploder/",
-      "title": "d3.geo.exploder",
-      "image": "/static/images/d3-geo-exploder.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/features/mapping-americas-futures",
-      "title" : "Mapping America's Futures",
-      "image" : "/static/images/MAF.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/features/build-your-own-pension",
-      "title" : "Build Your Own Pension Plan",
-      "image" : "/static/images/build-your-own-pension.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/Features/domestic-violence-data/dataviz/",
-      "title" : "Vizualizing Gaps in Domestic Violence Data",
-      "image" : "/static/images/datadive.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/features/bsouthga/crimeplot/",
-      "title" : "Crimes in US Cities",
-      "image" : "/static/images/crimeplot.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/features/everydayviolence/",
-      "title" : "Gun Violence in Washington DC",
-      "image" : "/static/images/everydayviolence.png"
-    },
-    {
-      "url" : "http://blog.metrotrends.org/2014/08/higher-minimum-wages-improve-economic-well-being-dc/",
-      "title" : "Minimum Wage Meta-analysis",
-      "image" : "/static/images/metaanalysis.png"
-    },
-    {
-      "url" : "http://datatools.urban.org/features/slepp/",
-      "title" : "SLEPP Report Card",
-      "image" : "/static/images/slepp.png"
-    }
   ]
 }
