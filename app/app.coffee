@@ -21,6 +21,7 @@ bibliography = template "bibliography"
 vizualization = template "vizualizations"
 thoughts = template "thoughts"
 main = template "main"
+year = new Date().getUTCFullYear()
 
 # prepare posts for serving
 posts = fs.readdirSync "./posts/"
@@ -41,29 +42,32 @@ posts = fs.readdirSync "./posts/"
 
 app = express()
 
-# index page
 app.get "/", (req, res) ->
+  res.redirect "/vizualization"
+
+# index page
+app.get "/about", (req, res) ->
   res.send main {
     content : index site_data
-    year : new Date().getUTCFullYear()
+    year : year
   }
 
 app.get "/bibliography", (req, res) ->
   res.send main {
     content : bibliography site_data
-    year : new Date().getUTCFullYear()
+    year : year
   }
 
 app.get "/vizualization", (req, res) ->
   res.send main {
     content : vizualization site_data
-    year : new Date().getUTCFullYear()
+    year : year
   }
 
 app.get "/posts", (req, res) ->
   res.send main {
     content : thoughts site_data
-    year : new Date().getUTCFullYear()
+    year : year
   }
 
 # blog posts
@@ -76,7 +80,7 @@ app.get "/404", (req, res) ->
   res.status 404
   res.send main {
     content : notfound {}
-    date : new Date().getUTCFullYear()
+    date :  year
   }
 
 # static folder for client side scripts
