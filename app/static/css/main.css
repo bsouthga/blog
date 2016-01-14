@@ -163,6 +163,11 @@ a:not(:last-child) .img-container {
 
 #media a {
   text-decoration: none;
+  margin: 10px;
+}
+
+#media a:hover {
+  opacity: 0.6;
 }
 
 #mobile-nav {

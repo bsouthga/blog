@@ -98,5 +98,3 @@ server = app.listen 3000, ->
   host = server.address().address
   port = server.address().port
   console.log "listening at http://#{host}:#{port}"
-
-
