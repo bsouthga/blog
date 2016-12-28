@@ -6,9 +6,9 @@ import Html exposing (Html, text)
 -- Individual blog post
 
 
-post : Html msg
-post =
-    text "post!"
+post : String -> Html msg
+post id =
+    text ( "post: " ++ id )
 
 
 
