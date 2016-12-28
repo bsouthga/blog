@@ -1,27 +1,41 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "public/index.js",
   "repository": "git@github.com:bsouthga/blog.git",
   "author": "Ben Southgate <bsouthga@gmail.com>",
   "watch": {
     "elm": {
       "patterns": [
-        "src"
+        "frontend"
       ],
       "extensions": "elm"
+    },
+    "tsc": {
+      "patterns": [
+        "backend"
+      ]
     }
   },
   "scripts": {
-    "minify": "cp ./public/index.html ./public/blog.html && html-minifier ./public/blog.html --minify-js --minify-css -o ./public/index.html",
-    "elm": "elm make ./src/Main.elm --output ./public/index.html --warn",
-    "build": "npm run elm && npm run minify",
-    "watch": "http-server & npm-watch"
+    "minify": "mv ./public/index.html ./public/tmp && html-minifier ./public/tmp --minify-js > ./public/index.html && rm ./public/tmp",
+    "elm": "elm make ./frontend/Main.elm --output ./public/index.html",
+    "build": "npm run tsc && npm run elm && npm run minify",
+    "tsc": "tsc",
+    "nodemon": "nodemon --watch ./public/index.js",
+    "dev": "npm run elm && npm run tsc && npm run nodemon & npm run watch",
+    "watch": "open http://127.0.0.1:8080/ && npm-watch"
   },
-  "license": "MIT",
+  "license": "BSD3",
   "devDependencies": {
+    "@types/express": "^4.0.34",
+    "@types/node": "^6.0.54",
     "html-minifier": "^3.2.3",
-    "http-server": "^0.9.0",
-    "npm-watch": "^0.1.7"
+    "npm-watch": "^0.1.7",
+    "typescript": "^2.1.4",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }

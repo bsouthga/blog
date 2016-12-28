@@ -1,4 +1,4 @@
-module View.About exposing (about)
+module View.About exposing (render)
 
 import Html exposing (Html, text, div, h1, span)
 
@@ -16,8 +16,8 @@ aboutText =
     """
 
 
-about : Html msg
-about =
+render : Html msg
+render =
     div []
         [ h1 []
             [ text "Me"

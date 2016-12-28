@@ -5,12 +5,11 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Model exposing (Model)
 import Model.Route exposing (Route(..))
-import View.About exposing (about)
-import View.Posts exposing (post, postList)
-import View.Visualizations exposing (visualizations)
-import View.NotFound exposing (notFound)
 import Action exposing (Action(..))
-
+import View.About
+import View.Posts
+import View.Visualizations
+import View.NotFound
 
 mainStyle : Html.Attribute Action
 mainStyle =
@@ -20,12 +19,22 @@ mainStyle =
         ]
 
 
+contentStyle : Html.Attribute Action
+contentStyle =
+    style
+        [ ( "max-width", "800px" )
+        , ( "margin", "0 auto" )
+        ]
+
+
 view : Model -> Html Action
 view model =
     div [ mainStyle ]
-        [ h1 [] [ text "Links" ]
-        , ul [] (List.map viewLink [ "/", "/blog/", "/blog/dynamic-reports-with-statex", "/visualizations" ])
-        , renderRoute model.page
+        [ div [ contentStyle ]
+            [ h1 [] [ text "Links" ]
+            , ul [] (List.map viewLink [ "/", "/blog/", "/blog/dynamic-reports-with-statex", "/visualizations" ])
+            , renderRoute model.page
+            ]
         ]
 
 
@@ -38,18 +47,18 @@ renderRoute : Maybe Route -> Html action
 renderRoute maybeRoute =
     case maybeRoute of
         Nothing ->
-            notFound
+            View.NotFound.render
 
         Just route ->
             case route of
                 Home ->
-                    about
+                    View.About.render
 
                 BlogPost id ->
-                    post id
+                    View.Posts.renderPost id
 
                 BlogPostList ->
-                    postList
+                    View.Posts.renderPostList
 
                 Visualizations ->
-                    visualizations
+                    View.Visualizations.render

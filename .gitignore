@@ -3,3 +3,4 @@ node_modules/*
 elm-stuff/
 public/*.html
 npm-debug.log
+public/*.js
