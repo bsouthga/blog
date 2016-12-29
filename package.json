@@ -18,11 +18,10 @@
     }
   },
   "scripts": {
-    "minify": "mv ./public/index.html ./public/tmp && html-minifier ./public/tmp --minify-js > ./public/index.html && rm ./public/tmp",
-    "elm": "elm make ./frontend/Main.elm --output ./public/index.html",
-    "build": "npm run tsc && npm run elm && npm run minify",
+    "elm": "elm make ./frontend/Main.elm --output ./public/frontend.js",
+    "build": "npm run tsc && npm run elm",
     "tsc": "tsc",
-    "nodemon": "nodemon --watch ./public/index.js",
+    "nodemon": "nodemon --watch ./public/*.js",
     "dev": "npm run elm && npm run tsc && npm run nodemon & npm run watch",
     "watch": "open http://127.0.0.1:8080/ && npm-watch"
   },

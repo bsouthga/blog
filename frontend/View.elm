@@ -33,7 +33,7 @@ view model =
         [ div [ contentStyle ]
             [ h1 [] [ text "Links" ]
             , ul [] (List.map viewLink [ "/", "/blog/", "/blog/dynamic-reports-with-statex", "/visualizations" ])
-            , renderRoute model.page
+            , renderRoute model
             ]
         ]
 
@@ -43,9 +43,9 @@ viewLink url =
     li [] [ button [ onClick (NewUrl url) ] [ text url ] ]
 
 
-renderRoute : Maybe Route -> Html action
-renderRoute maybeRoute =
-    case maybeRoute of
+renderRoute : Model -> Html action
+renderRoute model =
+    case model.page of
         Nothing ->
             View.NotFound.render
 
@@ -55,7 +55,7 @@ renderRoute maybeRoute =
                     View.About.render
 
                 BlogPost id ->
-                    View.Posts.renderPost id
+                    View.Posts.renderPost model.post
 
                 BlogPostList ->
                     View.Posts.renderPostList

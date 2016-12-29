@@ -16,7 +16,7 @@ aboutText =
     """
 
 
-render : Html msg
+render : Html action
 render =
     div []
         [ h1 []

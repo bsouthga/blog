@@ -1,13 +1,14 @@
 module Model exposing (Model, update)
 
-import Model.Route exposing (Route, route)
+import Model.Route exposing (Route(..), route)
 import Action exposing (Action(..))
 import Navigation
 import UrlParser as Url
-
+import View.Posts exposing (getPost)
 
 type alias Model =
     { page : Maybe Route
+    , post : String
     }
 
 
@@ -20,6 +21,23 @@ update action model =
             )
 
         UrlChange location ->
-            ( { model | page = (Url.parsePath route location) }
-            , Cmd.none
-            )
+            let
+                page =
+                    (Url.parsePath route location)
+
+                cmd = case page of
+                    Just (BlogPost id) ->
+                        getPost id
+                    _ ->
+                        Cmd.none
+            in
+                ( { model | page = page }, cmd )
+
+        ApiResult (Ok markdown) ->
+            ( { model | post = markdown }, Cmd.none )
+
+        ApiResult (Err _) ->
+            ( { model | post = "Error" }, Cmd.none )
+
+
+

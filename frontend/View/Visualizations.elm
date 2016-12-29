@@ -6,6 +6,6 @@ import Html exposing (Html, text)
 -- List of viz
 
 
-render : Html msg
+render : Html action
 render =
     text "visualizations!"
