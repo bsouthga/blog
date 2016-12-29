@@ -1,17 +1,17 @@
 module Route exposing (route, routeToCommand)
 
-import UrlParser as Url exposing ((</>), (<?>), s, int, string, top)
+import UrlParser exposing (Parser, oneOf, map, (</>), s, string, top)
 import Api exposing (getPost, getPostList)
 import Types exposing (Action, Route(..))
 
 
-route : Url.Parser (Route -> a) a
+route : Parser (Route -> a) a
 route =
-    Url.oneOf
-        [ Url.map Home top
-        , Url.map BlogPostList (s "posts" </> top)
-        , Url.map BlogPost (s "posts" </> string)
-        , Url.map Visualizations (s "visualizations" </> top)
+    oneOf
+        [ map Home top
+        , map BlogPostList (s "posts" </> top)
+        , map BlogPost (s "posts" </> string)
+        , map Visualizations (s "visualizations" </> top)
         ]
 
 

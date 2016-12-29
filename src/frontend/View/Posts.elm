@@ -1,9 +1,9 @@
 module View.Posts exposing (renderPost, renderPostList)
 
-import Html exposing (Html, text, div, h1, ul, li, a)
-import Html.Attributes exposing (href)
+import Html exposing (Html, text, div, h1, ul, li, button)
+import Html.Events exposing (onClick)
 import Markdown
-import Types exposing (PostMetadata)
+import Types exposing (PostMetadata, Action(..))
 
 
 -- Individual blog post
@@ -23,7 +23,7 @@ renderPost data =
 -- List of available blog posts
 
 
-renderPostList : List PostMetadata -> Html action
+renderPostList : List PostMetadata -> Html Action
 renderPostList postList =
     div []
         [ h1 []
@@ -34,9 +34,9 @@ renderPostList postList =
         ]
 
 
-renderPostListItem : PostMetadata -> Html action
+renderPostListItem : PostMetadata -> Html Action
 renderPostListItem p =
     li []
-        [ a [ href ("/posts/" ++ p.filename) ]
+        [ button [ onClick (NewUrl ("/posts/" ++ p.filename)) ]
             [ text p.title ]
         ]

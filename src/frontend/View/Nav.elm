@@ -1,8 +1,9 @@
 module View.Nav exposing (navbar)
 
-import Html exposing (Html, text, a, li, ul, div, h2)
-import Html.Attributes exposing (href)
+import Html exposing (Html, text, button, li, ul, div, h2)
+import Html.Events exposing (onClick)
 
+import Types exposing (Action(..))
 
 items : List ( String, String )
 items =
@@ -12,7 +13,7 @@ items =
     ]
 
 
-navbar : Html action
+navbar : Html Action
 navbar =
     div []
         [ h2 [] [ text "Navigation" ]
@@ -20,8 +21,8 @@ navbar =
         ]
 
 
-navbarItem : ( String, String ) -> Html msg
+navbarItem : ( String, String ) -> Html Action
 navbarItem ( title, src ) =
     li []
-        [ a [ href src ] [ text title ]
+        [ button [ onClick (NewUrl src) ] [ text title ]
         ]

@@ -5,10 +5,10 @@ import View.About
 import View.Posts
 import View.Visualizations
 import View.NotFound
-import Types exposing (Route(..), Model)
+import Types exposing (Route(..), Action, Model)
 
 
-renderRoute : Model -> Html action
+renderRoute : Model -> Html Action
 renderRoute model =
     case model.page of
         Nothing ->
