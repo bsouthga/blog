@@ -1,7 +1,7 @@
 module View exposing (view)
 
-import Html exposing (..)
-import Types exposing (Action(..), Route(..), Model)
+import Html exposing (Html, div)
+import Types exposing (Action, Model)
 import Styles
 import Html.CssHelpers
 import View.Route

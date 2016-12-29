@@ -2,8 +2,8 @@ module View.Nav exposing (navbar)
 
 import Html exposing (Html, text, button, li, ul, div, h2)
 import Html.Events exposing (onClick)
-
 import Types exposing (Action(..))
+
 
 items : List ( String, String )
 items =

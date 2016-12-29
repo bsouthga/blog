@@ -1,7 +1,7 @@
 module Update exposing (update)
 
 import Route exposing (route, routeToCommand)
-import Types exposing (Action(..), Route(..), Model)
+import Types exposing (Action(..), Model)
 import Navigation
 import UrlParser as Url
 
