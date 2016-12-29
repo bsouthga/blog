@@ -37,6 +37,6 @@ renderPostList postList =
 renderPostListItem : PostMetadata -> Html action
 renderPostListItem p =
     li []
-        [ a [ href p.filename ]
+        [ a [ href ("/posts/" ++ p.filename) ]
             [ text p.title ]
         ]
