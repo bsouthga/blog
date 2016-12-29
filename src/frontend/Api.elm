@@ -5,13 +5,6 @@ import Http
 import Json.Encode
 import Json.Decode
 import Json.Decode.Pipeline
-import Json.Encode
-import Json.Decode
-
-
--- elm-package install -- yes noredink/elm-decode-pipeline
-
-import Json.Decode.Pipeline
 
 
 decodePostMetadata : Json.Decode.Decoder PostMetadata

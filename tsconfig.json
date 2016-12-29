@@ -8,6 +8,6 @@
     "outDir": "public"
   },
   "files": [
-    "./backend/index.ts"
+    "./src/backend/index.ts"
   ]
 }

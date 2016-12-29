@@ -25,8 +25,8 @@
     }
   },
   "scripts": {
-    "elm": "elm make ./frontend/Main.elm --output ./public/frontend.js",
-    "styles": "elm-css ./frontend/Build/CompileStyleSheets.elm",
+    "elm": "elm make ./src/frontend/Main.elm --output ./public/frontend.js",
+    "styles": "elm-css ./src/frontend/Build/CompileStyleSheets.elm",
     "build": "npm run tsc && npm run elm && npm run styles",
     "tsc": "tsc",
     "nodemon": "nodemon --watch ./public/index.js --watch ./public/frontend.js",
