@@ -17,13 +17,16 @@ subscriptions model =
 init : Navigation.Location -> ( Model, Cmd Action )
 init location =
     let
-        page = (Url.parsePath route location)
+        page =
+            (Url.parsePath route location)
 
-        cmd = case page of
-            Just (BlogPost id) ->
-                getPost id
-            _ ->
-                Cmd.none
+        cmd =
+            case page of
+                Just (BlogPost id) ->
+                    getPost id
+
+                _ ->
+                    Cmd.none
     in
         ( Model page "loading...", cmd )
 

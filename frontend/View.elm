@@ -11,11 +11,13 @@ import View.Posts
 import View.Visualizations
 import View.NotFound
 
+
 mainStyle : Html.Attribute Action
 mainStyle =
     style
         [ ( "height", "100%" )
         , ( "padding", "30px" )
+        , ( "margin-bottom", "50px" )
         ]
 
 

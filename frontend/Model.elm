@@ -6,6 +6,7 @@ import Navigation
 import UrlParser as Url
 import View.Posts exposing (getPost)
 
+
 type alias Model =
     { page : Maybe Route
     , post : String
@@ -25,11 +26,13 @@ update action model =
                 page =
                     (Url.parsePath route location)
 
-                cmd = case page of
-                    Just (BlogPost id) ->
-                        getPost id
-                    _ ->
-                        Cmd.none
+                cmd =
+                    case page of
+                        Just (BlogPost id) ->
+                            getPost id
+
+                        _ ->
+                            Cmd.none
             in
                 ( { model | page = page }, cmd )
 
@@ -38,6 +41,3 @@ update action model =
 
         ApiResult (Err _) ->
             ( { model | post = "Error" }, Cmd.none )
-
-
-
