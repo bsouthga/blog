@@ -1,7 +1,13 @@
+---
+date: 01/04/2014
+subtitle:  A basic class for an easily subsetable dictionary using Python's <a href=\http://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields\>namedtuple</a> as keys for multidimensional indexing
+title: Indexing with namedtuple
+---
+
 # Indexing with `namedtuple`
 
 
-### A basic class for an easily subsetable dictionary using Python's [`namedtuple`](http://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields) as keys for multidimensional indexing (01.04.14)
+### A basic class for an easily subsetable dictionary using Python's [`namedtuple`](http://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields) as keys for multidimensional indexing
 
 
 Dictionaries/HashMaps/[HashTables](http://en.wikipedia.org/wiki/Hash_table) are great. Having items stored and returned at constant time complexity makes building up data structures, and finding items within them, a breeze.
@@ -10,7 +16,7 @@ But what if my item has multiple features? What if I want to get all the items t
 
 ```language-python
 >>> T = {}
->>> T[{"a":1,"b":True, "c":"string"}] = 4
+>>> T[{a":1,"b":True, "c":"string"}] = 4
 >>> T[{"a":2,"b":True, "c":"string"}] = 5
 >>> T[{"a":3,"b":False,"c":"string"}] = 6
 >>> T[{"b":True}]
@@ -50,7 +56,7 @@ from collections import namedtuple
 
 class MetaDict(object):
   ''' Sliceable, subsetable dictionary '''
-  
+
   def __init__(self, key_components):
     self.storage = {}
     self.key = namedtuple("multiKey",key_components)
@@ -58,7 +64,7 @@ class MetaDict(object):
   def __repr__(self):
     ''' pretty print representation '''
     return "{}:\n{}\n".format(
-      str(self.__class__)[17:-2], 
+      str(self.__class__)[17:-2],
       pformat(self.storage)
     )
 
@@ -72,12 +78,12 @@ class MetaDict(object):
       raise Exception("Incorrect Key: {}".format(invalid))
     else:
       self.storage[self.key(**index)] = item
-    
+
   def __getitem__(self, query):
-    ''' If the query is a full key, return the item. 
-        Otherwise, return a smaller MetaDict object 
-        containing all items which have key elements 
-        matching those specified in the query '''   
+    ''' If the query is a full key, return the item.
+        Otherwise, return a smaller MetaDict object
+        containing all items which have key elements
+        matching those specified in the query '''
 
     # If the query is a full key, return the value
     keys = query.keys()
@@ -90,14 +96,14 @@ class MetaDict(object):
       invalid = set(keys) - set(fields)
       raise Exception("Invalid Key: {}".format(invalid))
 
-    # The new key for the smaller MetaDict 
+    # The new key for the smaller MetaDict
     # will have the elements
     # not listed in the query.
     newfields = [k for k in fields if k not in keys]
 
     if len(newfields) > 1:
       results = MetaDict(newfields)
-      mutiple_field_key = True            
+      mutiple_field_key = True
     else:
       # Defaults to normal dictionary
       results = {}
@@ -105,15 +111,15 @@ class MetaDict(object):
 
     # Loop through all current entries
     for key in self.storage:
-      
+
       if all(getattr(key,k) == v for (k,v) in query.items()):
-        
+
         # create a dictionary of items NOT included in the query
         # to be used as the new sub key
         sub_key = {
-          k:v for (k,v) in key._asdict().items() 
+          k:v for (k,v) in key._asdict().items()
           if k not in keys
-        }      
+        }
 
         if mutiple_field_key:
           # Store the value in the new MetaDict
@@ -121,11 +127,11 @@ class MetaDict(object):
         else:
           # No longer need multidimensional indexing
           results[list(sub_key.values())[0]] = self.storage[key]
-      
+
     return results
 ```
 
-Finally, here is an example usage of the above class (thrown into a file `metadict.py`), with the exact indexing and sub-setting we were hoping for! 
+Finally, here is an example usage of the above class (thrown into a file `metadict.py`), with the exact indexing and sub-setting we were hoping for!
 
 ```
 >>> from metadict import MetaDict

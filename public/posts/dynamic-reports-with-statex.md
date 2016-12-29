@@ -1,3 +1,8 @@
+---
+date: 10/01/2013
+subtitle: Data analysis, LaTeX source generation, and pdf report compiling all in a single Stata .do file
+title: Dynamic reports with "StaTeX"
+---
 
 # Dynamic reports with `StaTeX` (Stata + LaTeX)
 

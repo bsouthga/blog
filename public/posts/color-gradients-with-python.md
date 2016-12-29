@@ -1,3 +1,8 @@
+---
+date: 12/03/2013
+subtitle: Investigating a few "Pythonic" ways to calculate gradients across given input colors
+title": Color gradients with Python
+---
 
 # Color gradients with Python
 

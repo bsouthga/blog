@@ -1,3 +1,8 @@
+---
+date: 09/01/2013
+subtitle: Random walk data generation and plotting in R<sup>3</sup>
+title: 10 million steps with R
+---
 
 # 10 million steps with R
 
