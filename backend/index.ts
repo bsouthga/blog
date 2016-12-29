@@ -2,7 +2,8 @@ import express = require('express');
 import { readFileSync, readFile } from 'fs';
 
 const app = express();
-const frontend = readFileSync('./public/frontend.js').toString();
+const frontendLogic = readFileSync('./public/frontend.js').toString();
+const frontendStyles = readFileSync('./public/frontend.css').toString();
 const postCache: { [key: string]: string } = {};
 const notFound = new Set<string>();
 
@@ -12,10 +13,13 @@ const index = `
   <head>
     <meta charset="UTF-8">
     <title>Ben Southgate</title>
+    <style>
+      ${frontendStyles}
+    </style>
   </head>
   <body>
     <script>
-      ${frontend}
+      ${frontendLogic}
       ;Elm.Main.fullscreen();
     </script>
   </body>

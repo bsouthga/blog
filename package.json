@@ -11,6 +11,12 @@
       ],
       "extensions": "elm"
     },
+    "styles": {
+      "patterns": [
+        "frontend"
+      ],
+      "extensions": "elm"
+    },
     "tsc": {
       "patterns": [
         "backend"
@@ -19,20 +25,22 @@
   },
   "scripts": {
     "elm": "elm make ./frontend/Main.elm --output ./public/frontend.js",
-    "build": "npm run tsc && npm run elm",
+    "styles": "elm-css ./frontend/Build/CompileStyleSheets.elm",
+    "build": "npm run tsc && npm run elm && npm run styles",
     "tsc": "tsc",
     "nodemon": "nodemon --watch ./public/*.js",
-    "dev": "npm run elm && npm run tsc && npm run nodemon & npm run watch",
+    "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
     "watch": "open http://127.0.0.1:8080/ && npm-watch"
   },
   "license": "BSD3",
   "devDependencies": {
     "@types/express": "^4.0.34",
     "@types/node": "^6.0.54",
+    "elm-css": "^0.6.0",
     "html-minifier": "^3.2.3",
+    "nodemon": "^1.11.0",
     "npm-watch": "^0.1.7",
-    "typescript": "^2.1.4",
-    "nodemon": "^1.11.0"
+    "typescript": "^2.1.4"
   },
   "dependencies": {
     "express": "^4.14.0"
