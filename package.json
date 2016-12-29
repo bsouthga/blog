@@ -20,7 +20,8 @@
     "tsc": {
       "patterns": [
         "backend"
-      ]
+      ],
+      "extensions": "ts"
     }
   },
   "scripts": {
@@ -28,13 +29,14 @@
     "styles": "elm-css ./frontend/Build/CompileStyleSheets.elm",
     "build": "npm run tsc && npm run elm && npm run styles",
     "tsc": "tsc",
-    "nodemon": "nodemon --watch ./public/*.js",
+    "nodemon": "nodemon --watch ./public/index.js --watch ./public/frontend.js",
     "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
-    "watch": "open http://127.0.0.1:8080/ && npm-watch"
+    "watch": "sleep 4 && open http://127.0.0.1:8080/ && npm-watch"
   },
   "license": "BSD3",
   "devDependencies": {
     "@types/express": "^4.0.34",
+    "@types/mongodb": "^2.1.36",
     "@types/node": "^6.0.54",
     "elm-css": "^0.6.0",
     "html-minifier": "^3.2.3",
@@ -43,6 +45,7 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mongodb": "^2.2.16"
   }
 }

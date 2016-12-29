@@ -1,42 +1,42 @@
-module View.Posts exposing (renderPost, renderPostList, getPost)
+module View.Posts exposing (renderPost, renderPostList)
 
-import Action exposing (Action(..))
-import Html exposing (Html, text, div, h1)
+import Html exposing (Html, text, div, h1, ul, li, a)
+import Html.Attributes exposing (href)
 import Markdown
-import Http
+import Types exposing (PostMetadata)
 
 
 -- Individual blog post
 
 
-renderPost : String -> Html action
-renderPost markdown =
-    Markdown.toHtml [] markdown
+renderPost : Maybe String -> Html action
+renderPost data =
+    case data of
+        Just markdown ->
+            Markdown.toHtml [] markdown
+
+        Nothing ->
+            text "(no post found)"
 
 
 
 -- List of available blog posts
 
 
-renderPostList : Html action
-renderPostList =
+renderPostList : List PostMetadata -> Html action
+renderPostList postList =
     div []
         [ h1 []
             [ text "Posts"
             ]
-        , div []
-            [ text "blah"
-            ]
+        , ul []
+            (List.map renderPostListItem postList)
         ]
 
 
-getPost : String -> Cmd Action
-getPost id =
-    let
-        url =
-            "/api/post/" ++ id
-
-        request =
-            Http.getString url
-    in
-        Http.send ApiResult request
+renderPostListItem : PostMetadata -> Html action
+renderPostListItem p =
+    li []
+        [ a [ href p.filename ]
+            [ text p.title ]
+        ]

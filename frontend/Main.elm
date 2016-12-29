@@ -3,10 +3,9 @@ module Main exposing (..)
 import Navigation
 import UrlParser as Url
 import View
-import View.Posts exposing (getPost)
-import Model exposing (Model, update)
-import Model.Route exposing (Route(..), route)
-import Action exposing (Action(..))
+import Update exposing (update)
+import Route exposing (route, routeToCommand)
+import Types exposing (Action(..), Route(..), Model)
 
 
 subscriptions : Model -> Sub Action
@@ -21,14 +20,14 @@ init location =
             (Url.parsePath route location)
 
         cmd =
-            case page of
-                Just (BlogPost id) ->
-                    getPost id
-
-                _ ->
-                    Cmd.none
+            routeToCommand page
     in
-        ( Model page "loading...", cmd )
+        ( { page = page
+          , post = Nothing
+          , postList = []
+          }
+        , cmd
+        )
 
 
 main : Program Never Model Action

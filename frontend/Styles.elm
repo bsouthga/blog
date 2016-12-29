@@ -1,4 +1,4 @@
-module Styles exposing (..)
+module Styles exposing (css, CssClasses(..))
 
 import Css exposing (..)
 import Css.Elements exposing (body, li)
@@ -6,39 +6,23 @@ import Css.Namespace exposing (namespace)
 
 
 type CssClasses
-    = NavBar
+    = Main
+    | Content
+    | Navbar
 
-
-type CssIds
-    = Page
 
 css : Stylesheet
 css =
-    (stylesheet << namespace "dreamwriter")
-    [ body
-        [ fontFamily sansSerif
+    (stylesheet << namespace "main")
+        [ body
+            [ fontFamily sansSerif
+            ]
+        , (.) Main
+            [ height (pct 100)
+            , padding (px 30)
+            ]
+        , (.) Content
+            [ maxWidth (px 800)
+            , margin2 (px 0) auto
+            ]
         ]
-    -- , (#) Page
-    --     [ backgroundColor (rgb 200 128 64)
-    --     , color (hex "CCFFFF")
-    --     , width (pct 100)
-    --     , height (pct 100)
-    --     , boxSizing borderBox
-    --     , padding (px 8)
-    --     , margin zero
-    --     ]
-    -- , (.) NavBar
-    --     [ margin zero
-    --     , padding zero
-    --     , children
-    --         [ li
-    --             [ (display inlineBlock) |> important
-    --             , color primaryAccentColor
-    --             ]
-    --         ]
-    --     ]
-    ]
-
-
-primaryAccentColor =
-    hex "ccffaa"

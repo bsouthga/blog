@@ -1,40 +1,26 @@
 module View exposing (view)
 
 import Html exposing (..)
-import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import Model exposing (Model)
-import Model.Route exposing (Route(..))
-import Action exposing (Action(..))
+import Types exposing (Action(..), Route(..), Model)
 import View.About
 import View.Posts
 import View.Visualizations
 import View.NotFound
+import Styles
+import Html.CssHelpers
 
 
-mainStyle : Html.Attribute Action
-mainStyle =
-    style
-        [ ( "height", "100%" )
-        , ( "padding", "30px" )
-        , ( "margin-bottom", "50px" )
-        ]
-
-
-contentStyle : Html.Attribute Action
-contentStyle =
-    style
-        [ ( "max-width", "800px" )
-        , ( "margin", "0 auto" )
-        ]
+{ class } =
+    Html.CssHelpers.withNamespace "main"
 
 
 view : Model -> Html Action
 view model =
-    div [ mainStyle ]
-        [ div [ contentStyle ]
+    div [ class [ Styles.Main ] ]
+        [ div [ class [ Styles.Content ] ]
             [ h1 [] [ text "Links" ]
-            , ul [] (List.map viewLink [ "/", "/blog/", "/blog/dynamic-reports-with-statex", "/visualizations" ])
+            , ul [] (List.map viewLink [ "/", "/posts/", "/posts/dynamic-reports-with-statex", "/visualizations" ])
             , renderRoute model
             ]
         ]
@@ -60,7 +46,7 @@ renderRoute model =
                     View.Posts.renderPost model.post
 
                 BlogPostList ->
-                    View.Posts.renderPostList
+                    View.Posts.renderPostList model.postList
 
                 Visualizations ->
                     View.Visualizations.render
