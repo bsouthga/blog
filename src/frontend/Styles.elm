@@ -1,7 +1,7 @@
 module Styles exposing (css, CssClasses(..))
 
 import Css exposing (..)
-import Css.Elements exposing (body, li)
+import Css.Elements exposing (body, li, img)
 import Css.Namespace exposing (namespace)
 
 
@@ -24,5 +24,8 @@ css =
         , (.) Content
             [ maxWidth (px 800)
             , margin2 (px 0) auto
+            ]
+        , img
+            [ maxWidth (pct 100)
             ]
         ]

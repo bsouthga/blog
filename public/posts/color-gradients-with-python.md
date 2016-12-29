@@ -91,7 +91,7 @@ def linear_gradient(start_hex, finish_hex="#FFFFFF", n=10):
 
 Outputting the RGB components as points in 3D space, and coloring the points with their corresponding hex notation gives us something like this (gradient ranges from `#4682B4` to `#FFB347`):
 
-<img src="blueorange.png"/>
+<img src="/images/blueorange.png"/>
 
 ## Multiple Linear Gradients <span>&#8658;</span> Polylinear Interpolation
 
@@ -136,7 +136,7 @@ def polylinear_gradient(colors, n):
 
 This means we can pick a few colors we want to our data to "evolve through", and get back a series of corresponding interpolated colors. Below is an example of linear gradients running through 5 different random colors, with 50 total interpolated colors.
 
-<img src="polyline.png"/>
+<img src="/images/polyline.png"/>
 
 While this serves the purpose of providing a gradient through multiple colors, it does so in a sort of jagged, inelegant way. What would be better is a smooth evolution accross the colors, with each input color providing various amounts of influence as we move through the gradient. For this, we can turn to Bezier Curves.
 
@@ -219,7 +219,7 @@ def bezier_gradient(colors, n_out=100):
 
 The result of this more technical gradient calculation is a smoother range, influenced by its given control colors. The following example takes in 3 control colors, but the above function can handle Bezier Curves of arbitrary degree.
 
-<img src="bezier_example.png"/>
+<img src="/images/bezier_example.png"/>
 
 ## Matplotlib Plotting Stuff
 

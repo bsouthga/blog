@@ -82,6 +82,7 @@ async function start() {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Ben Southgate</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
       <style>
         ${readFileSync('./public/frontend.css').toString()}
       </style>
@@ -96,7 +97,7 @@ async function start() {
   `;
 
 
-  app.use('/public', express.static('public'))
+  app.use(express.static('public'));
 
 
   app.get('/api/post/:id', (req, res) => {

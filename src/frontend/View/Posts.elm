@@ -4,6 +4,7 @@ import Html exposing (Html, text, div, h1, ul, li, button)
 import Html.Events exposing (onClick)
 import Markdown
 import Types exposing (PostMetadata, Action(..))
+import KaTeX
 
 
 -- Individual blog post
@@ -13,7 +14,7 @@ renderPost : Maybe String -> Html action
 renderPost data =
     case data of
         Just markdown ->
-            Markdown.toHtml [] markdown
+            Markdown.toHtml [] (compileLaTeX markdown)
 
         Nothing ->
             text "(no post found)"
@@ -40,3 +41,27 @@ renderPostListItem p =
         [ button [ onClick (NewUrl ("/posts/" ++ p.filename)) ]
             [ text p.title ]
         ]
+
+
+compileLaTeX : String -> String
+compileLaTeX markdown =
+    String.split "@@@" markdown
+        |> compileExpressions 1
+        |> String.join ""
+
+
+compileExpressions : Int -> List String -> List String
+compileExpressions index components =
+    case components of
+        current :: remaining ->
+            if index % 2 == 0 then
+                let
+                    compiled =
+                        KaTeX.renderToString current
+                in
+                    compiled :: compileExpressions (index + 1) remaining
+            else
+                current :: compileExpressions (index + 1) remaining
+
+        _ ->
+            components
