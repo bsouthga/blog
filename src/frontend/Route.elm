@@ -8,10 +8,11 @@ import Types exposing (Action, Route(..))
 route : Parser (Route -> a) a
 route =
     oneOf
-        [ map Home top
+        [ map About (s "about" </> top)
         , map BlogPostList (s "posts" </> top)
         , map BlogPost (s "posts" </> string)
         , map Visualizations (s "visualizations" </> top)
+        , map Visualizations top
         ]
 
 

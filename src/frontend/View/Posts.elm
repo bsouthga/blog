@@ -24,15 +24,19 @@ renderPost data =
 -- List of available blog posts
 
 
-renderPostList : List PostMetadata -> Html Action
-renderPostList postList =
-    div []
-        [ h1 []
-            [ text "Posts"
-            ]
-        , ul []
-            (List.map renderPostListItem postList)
-        ]
+renderPostList : Maybe (List PostMetadata) -> Html Action
+renderPostList posts =
+    case posts of
+        Nothing ->
+            text "unable to retrieve posts"
+        Just postList ->
+            div []
+                [ h1 []
+                    [ text "Posts"
+                    ]
+                , ul []
+                    (List.map renderPostListItem postList)
+                ]
 
 
 renderPostListItem : PostMetadata -> Html Action

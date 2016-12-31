@@ -7,7 +7,7 @@ import Types exposing (Action(..))
 
 items : List ( String, String )
 items =
-    [ ( "Home", "/" )
+    [ ( "About", "/about" )
     , ( "Posts", "/posts" )
     , ( "Visualizations", "/visualizations" )
     ]

@@ -16,7 +16,7 @@ renderRoute model =
 
         Just route ->
             case route of
-                Home ->
+                About ->
                     View.About.render
 
                 BlogPost id ->

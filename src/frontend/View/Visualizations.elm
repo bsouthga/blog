@@ -7,13 +7,17 @@ import Types exposing (VisualizationMetadata)
 -- List of viz
 
 
-render : List VisualizationMetadata -> Html action
+render : Maybe (List VisualizationMetadata) -> Html action
 render visualizations =
-    div []
-        [ h1 [] [ text "Visualizations" ]
-        , ul []
-            (List.map vizItem visualizations)
-        ]
+    case visualizations of
+        Nothing ->
+            text "unable to retrieve viz"
+        Just visList ->
+            div []
+                [ h1 [] [ text "Visualizations" ]
+                , ul []
+                    (List.map vizItem visList)
+                ]
 
 
 vizItem : VisualizationMetadata -> Html action

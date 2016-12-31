@@ -24,8 +24,8 @@ init location =
     in
         ( { page = page
           , post = Nothing
-          , postList = []
-          , vizList = []
+          , postList = Nothing
+          , vizList = Nothing
           }
         , cmd
         )

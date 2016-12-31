@@ -4,7 +4,6 @@ import Route exposing (route, routeToCommand)
 import Types exposing (Action(..), Model)
 import Navigation
 import UrlParser as Url
-import Debug
 
 
 {-
@@ -30,20 +29,26 @@ update action model =
             in
                 ( { model | page = page, post = Just "(loading...)" }, cmd )
 
+        {-
+           api success
+        -}
         PostMarkdownResponse (Ok markdown) ->
             ( { model | post = Just markdown }, Cmd.none )
+
+        PostMetadataResponse (Ok postList) ->
+            ( { model | postList = Just postList }, Cmd.none )
+
+        VisualizationMetadataResponse (Ok vizList) ->
+            ( { model | vizList = Just vizList }, Cmd.none )
+
+        {-
+           api failure
+        -}
+        VisualizationMetadataResponse (Err _) ->
+            ( { model | vizList = Nothing }, Cmd.none )
 
         PostMarkdownResponse (Err _) ->
             ( { model | post = Nothing }, Cmd.none )
 
-        PostMetadataResponse (Ok postList) ->
-            ( { model | postList = postList }, Cmd.none )
-
         PostMetadataResponse (Err _) ->
-            ( { model | postList = [] }, Cmd.none )
-
-        VisualizationMetadataResponse (Ok vizList) ->
-            ( { model | vizList = vizList }, Cmd.none )
-
-        VisualizationMetadataResponse (Err a) ->
-            ( { model | vizList = [] }, Cmd.none )
+            ( { model | postList = Nothing }, Cmd.none )

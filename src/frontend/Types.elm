@@ -13,7 +13,7 @@ type Action
 
 
 type Route
-    = Home
+    = About
     | Visualizations
     | BlogPost String
     | BlogPostList
@@ -22,8 +22,8 @@ type Route
 type alias Model =
     { page : Maybe Route
     , post : Maybe String
-    , postList : List PostMetadata
-    , vizList : List VisualizationMetadata
+    , postList : Maybe (List PostMetadata)
+    , vizList : Maybe (List VisualizationMetadata)
     }
 
 
