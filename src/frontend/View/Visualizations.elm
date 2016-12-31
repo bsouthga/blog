@@ -12,6 +12,7 @@ render visualizations =
     case visualizations of
         Nothing ->
             text "unable to retrieve viz"
+
         Just visList ->
             div []
                 [ h1 [] [ text "Visualizations" ]

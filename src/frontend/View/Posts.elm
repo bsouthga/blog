@@ -29,6 +29,7 @@ renderPostList posts =
     case posts of
         Nothing ->
             text "unable to retrieve posts"
+
         Just postList ->
             div []
                 [ h1 []

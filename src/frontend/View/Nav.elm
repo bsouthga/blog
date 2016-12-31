@@ -1,28 +1,35 @@
-module View.Nav exposing (navbar)
+module View.Nav exposing (render)
 
-import Html exposing (Html, text, button, li, ul, div, h2)
+import Html exposing (Html, text, button, li, ul, div, h2, span)
 import Html.Events exposing (onClick)
+import Html.CssHelpers
 import Types exposing (Action(..))
+import Styles
+
+
+{ class } =
+    Html.CssHelpers.withNamespace "main"
 
 
 items : List ( String, String )
 items =
-    [ ( "About", "/about" )
+    [ ( "Visualizations", "/visualizations" )
     , ( "Posts", "/posts" )
-    , ( "Visualizations", "/visualizations" )
+    , ( "About", "/about" )
     ]
 
 
-navbar : Html Action
-navbar =
-    div []
-        [ h2 [] [ text "Navigation" ]
-        , ul [] (List.map navbarItem items)
-        ]
+render : Html Action
+render =
+    div [ class [ Styles.Navbar ] ]
+        (List.map navbarItem items)
 
 
 navbarItem : ( String, String ) -> Html Action
 navbarItem ( title, src ) =
-    li []
-        [ button [ onClick (NewUrl src) ] [ text title ]
+    span
+        [ onClick (NewUrl src)
+        , class [ Styles.NavItem ]
+        ]
+        [ text title
         ]

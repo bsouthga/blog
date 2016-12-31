@@ -1,5 +1,9 @@
 import * as express from 'express';
+import { minify } from 'html-minifier';
+import  * as uglify from 'uglify-js';
 import { readFileSync, readFile, readdirSync } from 'fs';
+
+const read = denodeify(readFile);
 
 
 start().catch(err => {
@@ -19,7 +23,6 @@ function denodeify<D, T>(
 
 
 function loadPosts() {
-  const read = denodeify(readFile)
   const postDir = './public/posts/';
   const posts = readdirSync(postDir);
   return Promise.all(posts.map(async (filename) => {
@@ -40,6 +43,7 @@ interface PostMetadata {
   filename : string;
   content : string;
 }
+
 
 
 function parsePostMetadata(filename: string, post: string): PostMetadata {
@@ -74,8 +78,27 @@ async function start() {
     ({ date, subtitle, title, filename }) =>
     ({ date, subtitle, title, filename }));
 
+  const assetFiles = [
+    './public/vendor/github.css',
+    './public/frontend.css',
+    './public/vendor/highlight.js',
+    './public/frontend.js'
+  ];
 
-  const index = `
+  const assets = (await Promise.all(assetFiles.map(read)))
+    .reduce((out, asset, index) => {
+      const filename = assetFiles[index];
+      const str = asset.toString();
+      out[filename] = str;
+      return out;
+    }, { } as { [key: string]: string });
+
+  /**
+   *
+   * build app on server startup
+   *
+   */
+  const raw = `
     <!DOCTYPE html>
     <html>
     <head>
@@ -84,17 +107,25 @@ async function start() {
       <title>Ben Southgate</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
       <style>
-        ${readFileSync('./public/frontend.css').toString()}
+        ${assets['./public/vendor/github.css']}
+        ${assets['./public/frontend.css']}
       </style>
     </head>
     <body>
-      <script>
-        ${readFileSync('./public/frontend.js').toString()}
+      <script type="text/javascript">
+        ${assets['./public/vendor/highlight.js']}
+        ${assets['./public/frontend.js']}
         ;Elm.Main.fullscreen();
+        ;hljs.initHighlightingOnLoad();
       </script>
     </body>
     </html>
   `;
+
+  const index = minify(raw, {
+    minifyCSS: true,
+    minifyJS: true
+  });
 
 
   app.use(express.static('public'));
@@ -118,6 +149,10 @@ async function start() {
   app.get('/api/visualizations', (req, res) => {
     res.send(viz);
   });
+
+  app.get('/favicon.ico', (req, res) => {
+    res.send('');
+  })
 
   // GET method route
   app.get('*', (req, res) => {

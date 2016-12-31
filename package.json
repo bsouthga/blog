@@ -7,21 +7,22 @@
   "watch": {
     "elm": {
       "patterns": [
-        "frontend"
+        "./frontend/*"
       ],
       "extensions": "elm"
     },
     "styles": {
       "patterns": [
-        "frontend"
+        "./frontend/*"
       ],
       "extensions": "elm"
     },
     "tsc": {
       "patterns": [
-        "backend"
+        "./backend/*",
+        "./public/frontend.*"
       ],
-      "extensions": "ts"
+      "extensions": "ts,css,js"
     }
   },
   "scripts": {
@@ -29,15 +30,17 @@
     "styles": "elm-css ./src/frontend/Build/CompileStyleSheets.elm",
     "build": "npm run tsc && npm run elm && npm run styles",
     "tsc": "tsc",
-    "nodemon": "nodemon --watch ./public/index.js --watch ./public/frontend.js",
+    "nodemon": "nodemon --watch ./public/index.js",
     "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
     "watch": "sleep 4 && open http://127.0.0.1:8080/ && npm-watch"
   },
   "license": "BSD3",
   "devDependencies": {
     "@types/express": "^4.0.34",
+    "@types/html-minifier": "^1.1.30",
     "@types/mongodb": "^2.1.36",
     "@types/node": "^6.0.54",
+    "@types/uglify-js": "^2.6.28",
     "elm-css": "^0.6.0",
     "html-minifier": "^3.2.3",
     "nodemon": "^1.11.0",
@@ -46,6 +49,7 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "mongodb": "^2.2.16"
+    "mongodb": "^2.2.16",
+    "uglify-js": "^2.7.5"
   }
 }

@@ -14,7 +14,7 @@ I have a particular fascination with code that is computationally intense, yet v
 
 One simple and easy example of this sort of David-script is random walk data generation. With a bunch of free time this Labor-Day Weekend, I decided to take R for a long walk. Here is the code for a single step:
 
-```language-r
+```r
 # Take a step, given a previous position
 step <- function(old) {
   return(old + sample(-1:1,3, replace=True))
@@ -27,7 +27,7 @@ Since R is all about concise vector manipulation, I decided to implement the wal
 It was at this point that I got a real-world example of the overhead differences between raw, fixed dimension, matrices and unbounded data frames. My initial thought was to build up a data frame object from scratch, as follows:
 
 
-```language-r
+```r
 # Walk a number of steps in R^3
 walk <- function(steps) {
   path <- data.frame(x=c(0), y=c(0), z=c(0))
@@ -43,7 +43,7 @@ After running `walk()`, as defined above and for 1,000,000 steps, my computer qu
 
 My original implementation turned out to have 2 unnecessarily taxing components. Firstly, the fact that data frames are an extension of the list class means that they inherit a bunch of unnecessary attributes for lists, such as arbitrary component types. Secondly, building up the data frame up from a small original size incurs huge cumulative costs, as with each call of
 
-```language-r
+```r
 path[s,] <- step(path[s-1,])
 ```
 
@@ -51,7 +51,7 @@ R must copy the entire data frame, create a new one which is one row larger, and
 
 To avoid both of these issues, I decided to define a correctly sized matrix object up front, and assign each step to the relevant index. The definition for`walk()` then became the following:
 
-```language-r
+```r
 # Walk a number of steps in R^3
 walk <- function(steps) {
   path <- matrix(nrow=steps, ncol=3)
@@ -66,7 +66,7 @@ walk <- function(steps) {
 Now, as the appropriate amount of memory for the storage object has been declared up front, there is no need to create a new, expanded, matrix at each step. Using the `system.time()` command, we can see the immense efficiency increase.
 
 
-```language-r
+```r
 > steps <- 100000
 
 # Using an unbounded data frame

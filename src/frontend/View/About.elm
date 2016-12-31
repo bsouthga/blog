@@ -1,6 +1,6 @@
 module View.About exposing (render)
 
-import Html exposing (Html, text, div, h1, span)
+import Html exposing (Html, text, div, h1, p)
 
 
 -- About me
@@ -22,7 +22,7 @@ render =
         [ h1 []
             [ text "Me"
             ]
-        , span []
+        , p []
             [ text aboutText
             ]
         ]

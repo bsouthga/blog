@@ -14,9 +14,9 @@ Dictionaries/HashMaps/[HashTables](http://en.wikipedia.org/wiki/Hash_table) are 
 
 But what if my item has multiple features? What if I want to get all the items that have a certain values for some of those features? Ideally, I could index a dictionary with a few different attributes (in the form of another dictionary) and get back the item (if a full key is passed), or a set of items if a partial key is passed. An example usage of what I want might look like this...
 
-```language-python
+```python
 >>> T = {}
->>> T[{a":1,"b":True, "c":"string"}] = 4
+>>> T[{"a":1,"b":True, "c":"string"}] = 4
 >>> T[{"a":2,"b":True, "c":"string"}] = 5
 >>> T[{"a":3,"b":False,"c":"string"}] = 6
 >>> T[{"b":True}]
@@ -27,7 +27,7 @@ But what if my item has multiple features? What if I want to get all the items t
 
 If the above code is executed, the interpreter will inform you that dictionaries are unhashable, as they are [mutable](http://docs.python.org/2/reference/datamodel.html), and thus cannot be used as keys. However, if the set of attributes are known beforehand, this can be fixed with a special Python data structure. Bringforth the elegance of the [namedtuple](http://docs.python.org/2/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields). Namedtuples are a sort of mini-class, with a succinctly defined constructor, as shown in this completely valid example:
 
-```language-python
+```python
 from collections import namedtuple
 
 # Peanut constructor, defined by namedtuple invocation
@@ -50,7 +50,7 @@ Above we have defined a reference `p` to a peanut namedtuple constructor. It can
 
 Below, I offer a basic class which utilizes named tuples to allow for indexing with dictionaries. Additionally, just as was desired in the first theoretical code example, subsets of full keys can also be used as indexes, returning all applicable items. This is a very limited (purely for fun) implementation, as normal dictionary methods like `keys()` aren't present - however they can easily be added though by wrapping calls to `self.storage`'s methods in new method definitions.
 
-```language-python
+```python
 from pprint import pformat
 from collections import namedtuple
 
