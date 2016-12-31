@@ -14,6 +14,8 @@ type CssClasses
     | Footer
     | VizImage
     | VizItem
+    | ButtonLink
+    | PostListItem
 
 
 mainColor : Color
@@ -71,16 +73,21 @@ css =
             [ maxWidth (px 800)
             , margin2 (px 0) auto
             ]
+        , (.) PostListItem
+            [ margin2 (px 20) (px 0)
+            ]
+        , (.) ButtonLink
+            [ hover
+                [ borderBottom3 (px 1) solid mainColor
+                , cursor pointer
+                ]
+            ]
         , (.) Navbar
             [ textAlign center
             , marginTop (px 30)
             ]
         , (.) NavItem
             [ margin2 (px 0) (px 10)
-            , hover
-                [ borderBottom3 (px 1) solid mainColor
-                , cursor pointer
-                ]
             ]
         , (.) Current
             []

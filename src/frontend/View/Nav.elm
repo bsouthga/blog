@@ -29,7 +29,7 @@ navbarItem : ( String, String ) -> Html Action
 navbarItem ( title, src ) =
     span
         [ onClick (NewUrl src)
-        , class [ Styles.NavItem ]
+        , class [ Styles.NavItem, Styles.ButtonLink ]
         ]
         [ text title
         ]

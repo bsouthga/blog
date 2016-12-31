@@ -1,10 +1,18 @@
 module View.Posts exposing (renderPost, renderPostList)
 
-import Html exposing (Html, text, div, h1, ul, li, button)
+import Html exposing (Html, text, div, h1, ul, li, button, span)
 import Html.Events exposing (onClick)
 import Markdown
 import Types exposing (PostMetadata, Action(..))
 import KaTeX
+import Html.CssHelpers
+import Types exposing (Action(..))
+import Styles
+
+
+{ class } =
+    Html.CssHelpers.withNamespace "main"
+
 
 
 -- Individual blog post
@@ -41,10 +49,13 @@ renderPostList posts =
 
 
 renderPostListItem : PostMetadata -> Html Action
-renderPostListItem p =
-    li []
-        [ button [ onClick (NewUrl ("/posts/" ++ p.filename)) ]
-            [ text p.title ]
+renderPostListItem metadata =
+    li [ class [ Styles.PostListItem ] ]
+        [ span
+            [ class [ Styles.ButtonLink ]
+            , onClick (NewUrl ("/posts/" ++ metadata.filename))
+            ]
+            [ text ( "(" ++ metadata.date ++  ") " ++ metadata.title ) ]
         ]
 
 
