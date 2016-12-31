@@ -38,7 +38,7 @@ To streamline the report generation process, the whole LaTeX document would idea
 For those familiar with TeX syntax, `texdoc` is pretty simple to use. Here is an example beginning to a .do file using `texdoc`:
 
 
-```language-c
+```
 /* Initialize the TeX master source document */
 texdoc init test.tex, replace
 
@@ -90,7 +90,7 @@ Additionally, as shown in the last code fragment, the Stata date macros `$S_DATE
 Next, with the master LaTeX document initialized, actual analysis and table generation could begin. For example, lets note some sample restrictions in our report and then recreate the table shown above.
 
 
-```language-c
+```
 /* Load system data */
 sysuse auto, clear
 
@@ -144,7 +144,7 @@ The final command, `tex \addtab{ModelBuild}`, calls the LaTeX function defined a
 Now that we have a LaTeX document ready to be compiled, all we need to do is run it through pdflatex. Luckily, Stata provides built-in commands to interface with the OS Shell, allowing LaTeX compiling without leaving the .do file. Below, I've provided a few commands for doing precisely this in OSX 10.8, with [MacTeX](http://tug.org/mactex/) installed:
 
 
-```language-c
+```
 /* Stop LaTeX output from requiring manual continuation */
 set more off
 

@@ -1,11 +1,5 @@
 [
   {
-    "url": "http://gop.bsouth.ga",
-    "title": "GOP Twitter Derby",
-    "github": "https://github.com/bsouthga/gop-primary-twitter-fun",
-    "image": "images/gop.png"
-  },
-  {
     "url" : "http://bsouthga.github.io/atlantic-income-charts/",
     "title": "Income + College Majors",
     "github": "https://github.com/bsouthga/atlantic-income-charts",
@@ -51,11 +45,6 @@
     "url" : "http://datatools.urban.org/Features/domestic-violence-data/dataviz/",
     "title" : "Vizualizing Gaps in Domestic Violence Data",
     "image" : "images/datadive.png"
-  },
-  {
-    "url" : "http://datatools.urban.org/features/bsouthga/crimeplot/",
-    "title" : "Crimes in US Cities",
-    "image" : "images/crimeplot.png"
   },
   {
     "url" : "http://datatools.urban.org/features/everydayviolence/",

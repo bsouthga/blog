@@ -12,11 +12,18 @@ type CssClasses
     | NavItem
     | Current
     | Footer
+    | VizImage
+    | VizItem
 
 
 mainColor : Color
 mainColor =
-    (hex "#000000")
+    hex "#000000"
+
+
+linkColor : Color
+linkColor =
+    hex "#4DA6C2"
 
 
 css : Stylesheet
@@ -24,6 +31,37 @@ css =
     (stylesheet << namespace "main")
         [ body
             [ fontFamily sansSerif
+            , fontWeight normal
+            ]
+        , a
+            [ color linkColor ]
+        , pre
+            [ marginTop (px 60)
+            , marginBottom (px 60)
+            ]
+        , img
+            [ maxWidth (pct 60)
+            , margin2 (px 20) auto
+            , display block
+            ]
+        , hr
+            [ margin2 (px 30) (px 0)
+            , border (px 0)
+            , height (px 1)
+            , color mainColor
+            , backgroundColor mainColor
+            ]
+        , h1
+            [ fontWeight normal
+            ]
+        , h2
+            [ fontWeight normal
+            ]
+        , h3
+            [ fontWeight normal
+            ]
+        , p
+            [ lineHeight (em 1.5)
             ]
         , (.) Main
             [ height (pct 100)
@@ -49,28 +87,20 @@ css =
         , (.) Footer
             [ textAlign center
             ]
-        , pre
-            [ marginTop (px 60)
-            , marginBottom (px 60)
-            ]
-        , img
-            [ maxWidth (pct 60)
-            , margin2 (px 20) auto
+        , (.) VizItem
+            [ marginTop (px 30)
             , display block
+            , width (pct 100)
+            , color mainColor
+            , textDecoration none
+            , hover
+                [ cursor pointer
+                ]
             ]
-        , hr
-            [ margin2 (px 30) (px 0)
-            ]
-        , h1
-            [ fontWeight normal
-            ]
-        , h2
-            [ fontWeight normal
-            ]
-        , h3
-            [ fontWeight normal
-            ]
-        , p
-            [ lineHeight (em 1.5)
+        , (.) VizImage
+            [ maxWidth (pct 100)
+            , height (px 100)
+            , border3 (px 1) solid mainColor
+            , backgroundSize cover
             ]
         ]

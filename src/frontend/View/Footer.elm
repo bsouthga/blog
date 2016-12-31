@@ -12,5 +12,5 @@ import Styles
 render : Html action
 render =
     div [ class [ Styles.Footer ] ]
-        [ text "Ben Southgate - 2016"
+        [ text "Ben Southgate, 2016"
         ]

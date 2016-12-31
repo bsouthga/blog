@@ -49,28 +49,47 @@ renderPostListItem p =
 
 
 
--- split on @@@ delimited blocks and render latex
+{-
+   split on @@@ delimited blocks and render latex
+-}
 
 
 compileLaTeX : String -> String
 compileLaTeX markdown =
     String.split "@@@" markdown
-        |> compileExpressions 1
+        |> filterAndCompile 1
         |> String.join ""
 
 
-compileExpressions : Int -> List String -> List String
-compileExpressions index components =
+filterAndCompile : Int -> List String -> List String
+filterAndCompile index components =
     case components of
         current :: remaining ->
             let
                 compiled =
+                    -- after splitting, only the odd elements
+                    -- should be expressions
                     if index % 2 == 0 then
-                        KaTeX.renderToString current
+                        compileExpression current
                     else
                         current
             in
-                compiled :: compileExpressions (index + 1) remaining
+                compiled :: filterAndCompile (index + 1) remaining
 
         _ ->
             components
+
+
+compileExpression : String -> String
+compileExpression expression =
+    let
+        rendered =
+            KaTeX.renderToString expression
+    in
+        if String.startsWith "\\displaystyle" (String.trim expression) then
+            -- TODO: is there a better way?
+            "<div style=\"text-align: center;width: 100%;margin: 40px 0px;\">\n"
+                ++ rendered
+                ++ "</div>"
+        else
+            rendered
