@@ -4,6 +4,12 @@ import Route exposing (route, routeToCommand)
 import Types exposing (Action(..), Model)
 import Navigation
 import UrlParser as Url
+import Debug
+
+
+{-
+   TODO: gracefully handle api errors
+-}
 
 
 update : Action -> Model -> ( Model, Cmd Action )
@@ -35,3 +41,9 @@ update action model =
 
         PostMetadataResponse (Err _) ->
             ( { model | postList = [] }, Cmd.none )
+
+        VisualizationMetadataResponse (Ok vizList) ->
+            ( { model | vizList = vizList }, Cmd.none )
+
+        VisualizationMetadataResponse (Err a) ->
+            ( { model | vizList = [] }, Cmd.none )

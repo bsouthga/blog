@@ -26,6 +26,8 @@ css =
             , margin2 (px 0) auto
             ]
         , img
-            [ maxWidth (pct 100)
+            [ maxWidth (pct 60)
+            , margin2 (px 0) auto
+            , display block
             ]
         ]

@@ -25,6 +25,7 @@ init location =
         ( { page = page
           , post = Nothing
           , postList = []
+          , vizList = []
           }
         , cmd
         )

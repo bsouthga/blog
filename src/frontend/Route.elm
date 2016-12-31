@@ -1,7 +1,7 @@
 module Route exposing (route, routeToCommand)
 
 import UrlParser exposing (Parser, oneOf, map, (</>), s, string, top)
-import Api exposing (getPost, getPostList)
+import Api exposing (getPost, getPostList, getVizList)
 import Types exposing (Action, Route(..))
 
 
@@ -23,6 +23,9 @@ routeToCommand page =
 
         Just BlogPostList ->
             getPostList
+
+        Just Visualizations ->
+            getVizList
 
         _ ->
             Cmd.none

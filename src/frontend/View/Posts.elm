@@ -43,6 +43,10 @@ renderPostListItem p =
         ]
 
 
+
+-- split on @@@ delimited blocks and render latex
+
+
 compileLaTeX : String -> String
 compileLaTeX markdown =
     String.split "@@@" markdown
@@ -54,14 +58,14 @@ compileExpressions : Int -> List String -> List String
 compileExpressions index components =
     case components of
         current :: remaining ->
-            if index % 2 == 0 then
-                let
-                    compiled =
+            let
+                compiled =
+                    if index % 2 == 0 then
                         KaTeX.renderToString current
-                in
-                    compiled :: compileExpressions (index + 1) remaining
-            else
-                current :: compileExpressions (index + 1) remaining
+                    else
+                        current
+            in
+                compiled :: compileExpressions (index + 1) remaining
 
         _ ->
             components

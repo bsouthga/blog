@@ -26,4 +26,4 @@ renderRoute model =
                     View.Posts.renderPostList model.postList
 
                 Visualizations ->
-                    View.Visualizations.render
+                    View.Visualizations.render model.vizList

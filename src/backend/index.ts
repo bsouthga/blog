@@ -116,7 +116,7 @@ async function start() {
   const viz = require('./visualizations.json');
 
   app.get('/api/visualizations', (req, res) => {
-    return res.send(viz);
+    res.send(viz);
   });
 
   // GET method route
