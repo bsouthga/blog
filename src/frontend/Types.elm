@@ -9,12 +9,12 @@ type Action
     | UrlChange Navigation.Location
     | PostMarkdownResponse (Result Http.Error String)
     | PostMetadataResponse (Result Http.Error (List PostMetadata))
-    | VisualizationMetadataResponse (Result Http.Error (List VisualizationMetadata))
+    | GraphicMetadataResponse (Result Http.Error (List GraphicMetadata))
 
 
 type Route
     = About
-    | Visualizations
+    | Graphics
     | BlogPost String
     | BlogPostList
 
@@ -23,7 +23,7 @@ type alias Model =
     { page : Maybe Route
     , post : Maybe String
     , postList : Maybe (List PostMetadata)
-    , vizList : Maybe (List VisualizationMetadata)
+    , vizList : Maybe (List GraphicMetadata)
     }
 
 
@@ -35,7 +35,7 @@ type alias PostMetadata =
     }
 
 
-type alias VisualizationMetadata =
+type alias GraphicMetadata =
     { url : String
     , title : String
     , github : Maybe String

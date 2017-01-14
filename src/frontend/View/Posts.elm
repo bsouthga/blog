@@ -55,7 +55,7 @@ renderPostListItem metadata =
             [ class [ Styles.ButtonLink ]
             , onClick (NewUrl ("/posts/" ++ metadata.filename))
             ]
-            [ text ( "(" ++ metadata.date ++  ") " ++ metadata.title ) ]
+            [ text ("(" ++ metadata.date ++ ") " ++ metadata.title) ]
         ]
 
 

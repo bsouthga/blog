@@ -36,7 +36,9 @@ css =
             , fontWeight normal
             ]
         , a
-            [ color linkColor ]
+            [ color linkColor
+            , textDecoration none
+            ]
         , pre
             [ marginTop (px 60)
             , marginBottom (px 60)
@@ -106,6 +108,7 @@ css =
             ]
         , (.) VizImage
             [ maxWidth (pct 100)
+            , marginTop (px 5)
             , height (px 100)
             , border3 (px 1) solid mainColor
             , backgroundSize cover

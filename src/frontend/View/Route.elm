@@ -3,7 +3,7 @@ module View.Route exposing (renderRoute)
 import Html exposing (Html)
 import View.About
 import View.Posts
-import View.Visualizations
+import View.Graphics
 import View.NotFound
 import Types exposing (Route(..), Action, Model)
 
@@ -25,5 +25,5 @@ renderRoute model =
                 BlogPostList ->
                     View.Posts.renderPostList model.postList
 
-                Visualizations ->
-                    View.Visualizations.render model.vizList
+                Graphics ->
+                    View.Graphics.render model.vizList

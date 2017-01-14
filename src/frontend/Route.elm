@@ -11,8 +11,8 @@ route =
         [ map About (s "about" </> top)
         , map BlogPostList (s "posts" </> top)
         , map BlogPost (s "posts" </> string)
-        , map Visualizations (s "visualizations" </> top)
-        , map Visualizations top
+        , map Graphics (s "graphics" </> top)
+        , map Graphics top
         ]
 
 
@@ -25,7 +25,7 @@ routeToCommand page =
         Just BlogPostList ->
             getPostList
 
-        Just Visualizations ->
+        Just Graphics ->
             getVizList
 
         _ ->

@@ -144,9 +144,9 @@ async function start() {
 
 
   // TODO move to db
-  const viz = require('./visualizations.json');
+  const viz = require('./graphics.json');
 
-  app.get('/api/visualizations', (req, res) => {
+  app.get('/api/graphics', (req, res) => {
     res.send(viz);
   });
 

@@ -1,6 +1,6 @@
 module Api exposing (getPost, getPostList, getVizList)
 
-import Types exposing (Action(..), PostMetadata, VisualizationMetadata)
+import Types exposing (Action(..), PostMetadata, GraphicMetadata)
 import Http
 import Json.Encode as Enc
 import Json.Decode as Dec
@@ -35,12 +35,12 @@ getVizList : Cmd Action
 getVizList =
     let
         url =
-            "/api/visualizations"
+            "/api/graphics"
 
         request =
-            Http.get url (Dec.list decodeVisualizationMetadata)
+            Http.get url (Dec.list decodeGraphicMetadata)
     in
-        Http.send VisualizationMetadataResponse request
+        Http.send GraphicMetadataResponse request
 
 
 decodePostMetadata : Dec.Decoder PostMetadata
@@ -62,17 +62,17 @@ encodePostMetadata record =
         ]
 
 
-decodeVisualizationMetadata : Dec.Decoder VisualizationMetadata
-decodeVisualizationMetadata =
-    decode VisualizationMetadata
+decodeGraphicMetadata : Dec.Decoder GraphicMetadata
+decodeGraphicMetadata =
+    decode GraphicMetadata
         |> required "url" Dec.string
         |> required "title" Dec.string
         |> optional "github" (Dec.nullable Dec.string) Nothing
         |> required "image" Dec.string
 
 
-encodeVisualizationMetadata : VisualizationMetadata -> Enc.Value
-encodeVisualizationMetadata record =
+encodeGraphicMetadata : GraphicMetadata -> Enc.Value
+encodeGraphicMetadata record =
     let
         github =
             case record.github of

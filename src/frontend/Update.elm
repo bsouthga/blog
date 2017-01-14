@@ -38,13 +38,13 @@ update action model =
         PostMetadataResponse (Ok postList) ->
             ( { model | postList = Just postList }, Cmd.none )
 
-        VisualizationMetadataResponse (Ok vizList) ->
+        GraphicMetadataResponse (Ok vizList) ->
             ( { model | vizList = Just vizList }, Cmd.none )
 
         {-
            api failure
         -}
-        VisualizationMetadataResponse (Err _) ->
+        GraphicMetadataResponse (Err _) ->
             ( { model | vizList = Nothing }, Cmd.none )
 
         PostMarkdownResponse (Err _) ->
