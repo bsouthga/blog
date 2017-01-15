@@ -31,7 +31,7 @@
     "styles": "elm-css ./src/frontend/Build/CompileStyleSheets.elm",
     "build": "npm run tsc && npm run elm && npm run styles",
     "build-prod": "npm run build && npm run minify",
-    "package": "rm bundle* && rm -rf dist && mkdir dist && cp -r ./public ./dist/public && cp ./package.json ./dist/package.json && cd dist/ && zip -D -r \"../bundle_$(git rev-parse --short=1 HEAD).zip\" *",
+    "package": "rm bundle* && rm -rf dist && mkdir dist && cp -r ./public ./dist/public && cp ./package.json ./dist/package.json && cd dist/ && zip -D -r ../bundle.zip *",
     "bundle": "npm run build-prod && npm run package",
     "minify": "uglifyjs ./public/frontend.js -m 'toplevel' > ./tmp && mv ./tmp ./public/frontend.js",
     "tsc": "tsc",

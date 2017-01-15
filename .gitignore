@@ -6,7 +6,7 @@ npm-debug.log
 public/*.js
 public/*.css
 dist
-bundle_*
+bundle*
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
