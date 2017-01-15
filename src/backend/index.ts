@@ -4,6 +4,7 @@ import  * as uglify from 'uglify-js';
 import { readFileSync, readFile, readdirSync } from 'fs';
 
 const read = denodeify(readFile);
+const port = process.env.PORT || 3000;
 
 
 start().catch(err => {
@@ -160,8 +161,8 @@ async function start() {
   });
 
 
-  app.listen(8080, () => {
-    console.log('Example app listening on port 8080!')
+  app.listen(port, () => {
+    console.log(`blog listening on port ${port}!`);
   });
 }
 

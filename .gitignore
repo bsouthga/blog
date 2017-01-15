@@ -5,3 +5,5 @@ public/*.html
 npm-debug.log
 public/*.js
 public/*.css
+dist
+bundle_*
