@@ -1,0 +1,16 @@
+branch-defaults:
+  master:
+    environment: blog-env
+environment-defaults:
+  blog-env:
+    branch: null
+    repository: null
+global:
+  application_name: blog
+  default_ec2_keyname: null
+  default_platform: 64bit Amazon Linux 2016.09 v3.3.0 running Node.js
+  default_region: us-east-1
+  profile: eb-cli
+  sc: git
+deploy:
+  artifact: bundle.zip
