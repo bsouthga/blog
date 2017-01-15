@@ -23,13 +23,19 @@ function denodeify<D, T>(
 }
 
 
-function loadPosts() {
+async function loadPosts() {
   const postDir = './public/posts/';
   const posts = readdirSync(postDir);
-  return Promise.all(posts.map(async (filename) => {
+  const postList = await Promise.all(posts.map(async (filename) => {
     const file = (await read(postDir + filename)).toString();
     return parsePostMetadata(filename, file);
   }));
+
+  postList.sort((a, b) => {
+    return (new Date(b.date)).getTime() - (new Date(a.date)).getTime();
+  });
+
+  return postList;
 }
 
 

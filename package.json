@@ -37,7 +37,7 @@
     "tsc": "tsc",
     "nodemon": "nodemon --watch ./public/index.js",
     "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
-    "watch": "sleep 4 && open http://127.0.0.1:8080/ && npm-watch"
+    "watch": "sleep 4 && open http://127.0.0.1:3000/ && npm-watch"
   },
   "license": "BSD3",
   "devDependencies": {
