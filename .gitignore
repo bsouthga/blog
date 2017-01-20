@@ -4,7 +4,8 @@ elm-stuff/
 public/*.html
 npm-debug.log
 public/*.js
-public/*.css
+public/assets/*.js
+public/assets/*.css
 dist
 bundle*
 # Elastic Beanstalk Files

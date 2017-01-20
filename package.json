@@ -6,28 +6,21 @@
   "author": "Ben Southgate <bsouthga@gmail.com>",
   "watch": {
     "elm": {
-      "patterns": [
-        "./frontend/*"
-      ],
+      "patterns": [ "src/frontend/*" ],
       "extensions": "elm"
     },
     "styles": {
-      "patterns": [
-        "./frontend/*"
-      ],
+      "patterns": [ "src/frontend/*" ],
       "extensions": "elm"
     },
     "tsc": {
-      "patterns": [
-        "./backend/*",
-        "./public/frontend.*"
-      ],
+      "patterns": [ "src/backend/*", "public/assets/*" ],
       "extensions": "ts,css,js"
     }
   },
   "scripts": {
     "start": "node public/index.js",
-    "elm": "elm make ./src/frontend/Main.elm --output ./public/frontend.js",
+    "elm": "elm make ./src/frontend/Main.elm --output ./public/assets/frontend.js",
     "styles": "elm-css ./src/frontend/Build/CompileStyleSheets.elm",
     "build": "npm run tsc && npm run elm && npm run styles",
     "build-prod": "npm run build && npm run minify",
@@ -36,9 +29,9 @@
     "deploy": "npm run bundle && eb deploy --staged",
     "minify": "uglifyjs ./public/frontend.js -m 'toplevel' > ./tmp && mv ./tmp ./public/frontend.js",
     "tsc": "tsc",
-    "nodemon": "nodemon --watch ./public/index.js",
+    "nodemon": "nodemon --watch public/index.js",
     "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
-    "watch": "sleep 4 && open http://127.0.0.1:3000/ && npm-watch"
+    "watch": "npm-watch"
   },
   "license": "BSD3",
   "devDependencies": {

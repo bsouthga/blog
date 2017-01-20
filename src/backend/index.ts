@@ -87,9 +87,9 @@ async function start() {
 
   const assetFiles = [
     './public/vendor/github.css',
-    './public/frontend.css',
+    './public/assets/frontend.css',
     './public/vendor/highlight.js',
-    './public/frontend.js'
+    './public/assets/frontend.js'
   ];
 
   const assets = (await Promise.all(assetFiles.map(read)))
@@ -115,13 +115,13 @@ async function start() {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
       <style>
         ${assets['./public/vendor/github.css']}
-        ${assets['./public/frontend.css']}
+        ${assets['./public/assets/frontend.css']}
       </style>
     </head>
     <body>
       <script type="text/javascript">
         ${assets['./public/vendor/highlight.js']}
-        ${assets['./public/frontend.js']}
+        ${assets['./public/assets/frontend.js']}
         ;Elm.Main.fullscreen();
         ;hljs.initHighlightingOnLoad();
       </script>
@@ -159,9 +159,8 @@ async function start() {
     res.send(posts);
   });
 
-
   // TODO move to db
-  const viz = require('./graphics.json');
+  const viz = require('./assets/graphics.json');
 
   app.get('/api/graphics', (req, res) => {
     res.send(viz);
@@ -178,7 +177,7 @@ async function start() {
 
 
   app.listen(port, () => {
-    console.log(`blog listening on port ${port}!`);
+    console.log(`server listening at http://127.0.0.1:${port}/`);
   });
 }
 

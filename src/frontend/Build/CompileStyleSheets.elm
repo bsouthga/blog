@@ -10,7 +10,7 @@ port files : CssFileStructure -> Cmd msg
 fileStructure : CssFileStructure
 fileStructure =
     Css.File.toFileStructure
-        [ ( "./public/frontend.css", Css.File.compile [ Styles.css ] ) ]
+        [ ( "./public/assets/frontend.css", Css.File.compile [ Styles.css ] ) ]
 
 
 main : CssCompilerProgram
