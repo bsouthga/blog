@@ -4,7 +4,7 @@
     "repository": "https://github.com/bsouthga/blog.git",
     "license": "BSD3",
     "source-directories": [
-        "src/frontend"
+        "src"
     ],
     "exposed-modules": [],
     "native-modules": true,

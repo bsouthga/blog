@@ -4,50 +4,25 @@
   "main": "public/index.js",
   "repository": "git@github.com:bsouthga/blog.git",
   "author": "Ben Southgate <bsouthga@gmail.com>",
-  "watch": {
-    "elm": {
-      "patterns": [ "src/frontend/*" ],
-      "extensions": "elm"
-    },
-    "styles": {
-      "patterns": [ "src/frontend/*" ],
-      "extensions": "elm"
-    },
-    "tsc": {
-      "patterns": [ "src/backend/*", "public/assets/*" ],
-      "extensions": "ts,css,js"
-    }
-  },
   "scripts": {
-    "start": "node public/index.js",
-    "elm": "elm make ./src/frontend/Main.elm --output ./public/assets/frontend.js",
-    "styles": "elm-css ./src/frontend/Build/CompileStyleSheets.elm",
-    "build": "npm run tsc && npm run elm && npm run styles",
-    "build-prod": "npm run build && npm run minify",
-    "package": "rm bundle* && rm -rf dist && mkdir dist && cp -r ./public ./dist/public && cp ./package.json ./dist/package.json && cd dist/ && zip -D -r ../bundle.zip *",
-    "bundle": "npm run build-prod && npm run package",
-    "deploy": "npm run bundle && eb deploy --staged",
-    "minify": "uglifyjs ./public/frontend.js -m 'toplevel' > ./tmp && mv ./tmp ./public/frontend.js",
+    "elm": "elm make ./src/Main.elm --output ./public/assets/frontend.js",
+    "styles": "elm-css ./src/Build/CompileStyleSheets.elm",
+    "postinstall": "elm-package install --yes",
+    "prettier": "prettier ./build/* --write",
     "tsc": "tsc",
-    "nodemon": "nodemon --watch public/index.js",
-    "dev": "npm run elm && npm run styles && npm run tsc && npm run nodemon & npm run watch",
-    "watch": "npm-watch"
+    "build": "npm run tsc && npm run elm && npm run styles && node ./public/index.js"
   },
   "license": "BSD3",
   "devDependencies": {
-    "@types/express": "^4.0.34",
     "@types/html-minifier": "^1.1.30",
-    "@types/mongodb": "^2.1.36",
     "@types/node": "^6.0.54",
-    "@types/uglify-js": "^2.6.28",
+    "@types/uglify-js": "^2.6.29",
     "elm-css": "^0.6.0",
-    "nodemon": "^1.11.0",
-    "npm-watch": "^0.1.7",
-    "typescript": "^2.1.4",
-    "uglify-js": "^2.7.5"
+    "html-minifier": "^3.5.2",
+    "typescript": "^2.3.4",
+    "uglify-js": "^3.0.20"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "html-minifier": "^3.2.3"
+    "prettier": "^1.4.4"
   }
 }
