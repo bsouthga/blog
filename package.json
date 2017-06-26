@@ -10,7 +10,8 @@
     "postinstall": "elm-package install --yes",
     "prettier": "prettier ./build/* --write",
     "tsc": "tsc",
-    "build": "npm run tsc && npm run elm && npm run styles && node ./public/index.js"
+    "build": "npm run tsc && npm run elm && npm run styles && node ./public/index.js",
+    "deploy": "npm run build && aws s3 sync ./public/ s3://bsou.io"
   },
   "license": "BSD3",
   "devDependencies": {
