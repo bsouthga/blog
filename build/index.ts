@@ -1,5 +1,5 @@
 import { minify } from 'html-minifier';
-import  * as uglify from 'uglify-js';
+import * as uglify from 'uglify-js';
 import * as fs from "fs";
 
 interface PostMetadata {
@@ -111,13 +111,12 @@ async function build() {
       </style>
     </head>
     <body>
-      <script type="text/javascript">
-        ${assets["./public/vendor/highlight.js"]}
-        ${assets["./public/assets/frontend.js"]}
+      <script>
+        ;${assets["./public/vendor/highlight.js"]}
+        ;${uglify.minify(assets["./public/assets/frontend.js"]).code}
         ;Elm.Main.fullscreen();
         ;hljs.initHighlightingOnLoad();
-      </script>
-      <script>
+
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

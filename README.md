@@ -1,9 +1,5 @@
 # source for bsou.io
 
-
-- [Elm client](https://github.com/bsouthga/blog/tree/master/src/frontend)
-- [TypeScript server](https://github.com/bsouthga/blog/tree/master/src/backend)
-
 ## Requirements
 
 - NodeJS: ^6.0.0
@@ -16,7 +12,5 @@
 After installing the above Requirements...
 
 ```shell
-elm package install
 yarn
-npm run deploy
 ```
