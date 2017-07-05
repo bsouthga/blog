@@ -14,3 +14,4 @@ bundle*
 !.elasticbeanstalk/*.global.yml
 !.elasticbeanstalk/config.yml
 public/api/
+public/optimized

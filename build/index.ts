@@ -1,6 +1,10 @@
-import { minify } from 'html-minifier';
-import * as uglify from 'uglify-js';
+import { minify } from "html-minifier";
+import * as uglify from "uglify-js";
 import * as fs from "fs";
+
+const imagemin = require("imagemin");
+const jpegtran = require("imagemin-jpegtran");
+const pngquant = require("imagemin-pngquant");
 
 interface PostMetadata {
   date: string;
@@ -112,10 +116,18 @@ async function build() {
     </head>
     <body>
       <script>
+        /**
+         * handle s3 redirects
+         */
+        if (location.hash.length > 0 && location.hash.substring(0, 2) === '#!') {
+          history.pushState({}, '', location.hash.substring(2));
+        }
+
         ;${assets["./public/vendor/highlight.js"]}
         ;${uglify.minify(assets["./public/assets/frontend.js"]).code}
         ;Elm.Main.fullscreen();
         ;hljs.initHighlightingOnLoad();
+
 
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -135,23 +147,31 @@ async function build() {
     minifyJS: true
   });
 
-  if (!fs.existsSync('./public/api/')) fs.mkdirSync('./public/api/');
-  if (!fs.existsSync('./public/api/post/')) fs.mkdirSync('./public/api/post/');
+  if (!fs.existsSync("./public/api/")) fs.mkdirSync("./public/api/");
+  if (!fs.existsSync("./public/api/post/")) fs.mkdirSync("./public/api/post/");
 
-  await Promise.all(Object.keys(postCache).map(key => {
-    return write(`./public/api/post/${key}`, postCache[key]);
-  }));
+  await Promise.all(
+    Object.keys(postCache).map(key => {
+      return write(`./public/api/post/${key}`, postCache[key]);
+    })
+  );
 
   await write(`./public/api/posts`, JSON.stringify(posts));
-  await write(`./public/api/graphics`, JSON.stringify(require("./assets/graphics.json")));
-  await write('./public/index.html', index);
+  await write(
+    `./public/api/graphics`,
+    JSON.stringify(require("./assets/graphics.json"))
+  );
+  await write("./public/index.html", index);
+
+  console.log(`optimizing images...`);
+  await imagemin(["public/images/*.{jpg,png}"], "public/optimized", {
+    use: [jpegtran(), pngquant({ quality: "65-80" })]
+  });
 }
-
-
 
 function write(filename: string, data: any) {
   console.log(`writing file ${filename}...`);
   new Promise((res, rej) => {
-    fs.writeFile(filename, data, err => err ? rej(err) : res())
+    fs.writeFile(filename, data, err => (err ? rej(err) : res()));
   });
 }

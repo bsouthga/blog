@@ -3,62 +3,62 @@
     "url" : "http://bsouthga.github.io/atlantic-income-charts/",
     "title": "Income + College Majors",
     "github": "https://github.com/bsouthga/atlantic-income-charts",
-    "image": "images/atlantic-income.png"
+    "image": "optimized/atlantic-income.png"
   },
   {
     "url" : "http://datatools.urban.org/features/average-wages/",
     "title": "Wages and Employment Explorer",
     "github": "https://github.com/UI-Research/RockefellerWages",
-    "image": "images/wages-and-employment.png"
+    "image": "optimized/wages-and-employment.png"
   },
   {
     "url": "http://datatools.urban.org/features/childrens-health-coverage-at-risk/iframe_test.html",
     "github": "https://github.com/UrbanInstitute/child-insurance",
     "title": "Children’s Coverage: What Lies Ahead?",
-    "image": "images/child-insurance.png"
+    "image": "optimized/child-insurance.png"
   },
   {
     "url" : "http://www.theatlantic.com/business/archive/2015/03/laughter-in-fed-transcripts/388027/",
     "title": "Laughing All the Way to the Crash",
     "github": "https://github.com/bsouthga/funnyfed",
-    "image": "images/funnyfed.png"
+    "image": "optimized/funnyfed.png"
   },
   {
     "url" : "http://bsouthga.github.io/d3-exploder/",
     "title": "d3-exploder",
     "github": "https://github.com/bsouthga/d3-exploder",
-    "image": "images/d3-geo-exploder.png"
+    "image": "optimized/d3-geo-exploder.png"
   },
   {
     "url" : "http://datatools.urban.org/features/mapping-americas-futures",
     "github": "https://github.com/UrbanInstitute/mapping-americas-futures",
     "title" : "Mapping America's Futures",
-    "image" : "images/MAF.png"
+    "image" : "optimized/MAF.png"
   },
   {
     "url" : "http://datatools.urban.org/features/build-your-own-pension",
     "github": "https://github.com/UrbanInstitute/build-your-own-pension",
     "title" : "Build Your Own Pension Plan",
-    "image" : "images/build-your-own-pension.png"
+    "image" : "optimized/build-your-own-pension.png"
   },
   {
     "url" : "http://datatools.urban.org/Features/domestic-violence-data/dataviz/",
     "title" : "Vizualizing Gaps in Domestic Violence Data",
-    "image" : "images/datadive.png"
+    "image" : "optimized/datadive.png"
   },
   {
     "url" : "http://datatools.urban.org/features/everydayviolence/",
     "title" : "Gun Violence in Washington DC",
-    "image" : "images/everydayviolence.png"
+    "image" : "optimized/everydayviolence.png"
   },
   {
     "url" : "http://blog.metrotrends.org/2014/08/higher-minimum-wages-improve-economic-well-being-dc/",
     "title" : "Minimum Wage Meta-analysis",
-    "image" : "images/metaanalysis.png"
+    "image" : "optimized/metaanalysis.png"
   },
   {
     "url" : "http://datatools.urban.org/features/slepp/",
     "title" : "SLEPP Report Card",
-    "image" : "images/slepp.png"
+    "image" : "optimized/slepp.png"
   }
 ]
