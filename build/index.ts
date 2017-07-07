@@ -84,7 +84,9 @@ async function build() {
     "./public/vendor/github.css",
     "./public/assets/frontend.css",
     "./public/vendor/highlight.js",
-    "./public/assets/frontend.js"
+    "./public/assets/frontend.js",
+    "./node_modules/katex/dist/katex.js",
+    "./node_modules/katex/dist/katex.css",
   ];
 
   const assets = (await Promise.all(
@@ -108,8 +110,8 @@ async function build() {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Ben Southgate</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
       <style>
+        ${assets["./node_modules/katex/dist/katex.css"]}
         ${assets["./public/vendor/github.css"]}
         ${assets["./public/assets/frontend.css"]}
       </style>
@@ -124,6 +126,7 @@ async function build() {
         }
 
         ;${assets["./public/vendor/highlight.js"]}
+        ;${uglify.minify(assets["./node_modules/katex/dist/katex.js"]).code}
         ;${uglify.minify(assets["./public/assets/frontend.js"]).code}
         ;Elm.Main.fullscreen();
         ;hljs.initHighlightingOnLoad();
