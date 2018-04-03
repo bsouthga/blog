@@ -1,5 +1,11 @@
 [
   {
+    "url": "https://predictit.bsou.io",
+    "title": "PredictIt Explorer",
+    "github": "https://github.com/bsouthga/predictit-explorer",
+    "image": "optimized/predictit.png"
+  },
+  {
     "url": "https://bsouthga.github.io/cap-childcare-deserts/",
     "title": "Child Care Deserts",
     "github": "https://github.com/bsouthga/cap-childcare-deserts",
@@ -16,12 +22,6 @@
     "title": "Wages and Employment Explorer",
     "github": "https://github.com/UI-Research/RockefellerWages",
     "image": "optimized/wages-and-employment.png"
-  },
-  {
-    "url": "http://datatools.urban.org/features/childrens-health-coverage-at-risk/iframe_test.html",
-    "github": "https://github.com/UrbanInstitute/child-insurance",
-    "title": "Children’s Coverage: What Lies Ahead?",
-    "image": "optimized/child-insurance.png"
   },
   {
     "url" : "http://www.theatlantic.com/business/archive/2015/03/laughter-in-fed-transcripts/388027/",
@@ -56,11 +56,6 @@
     "url" : "http://datatools.urban.org/features/everydayviolence/",
     "title" : "Gun Violence in Washington DC",
     "image" : "optimized/everydayviolence.png"
-  },
-  {
-    "url" : "http://blog.metrotrends.org/2014/08/higher-minimum-wages-improve-economic-well-being-dc/",
-    "title" : "Minimum Wage Meta-analysis",
-    "image" : "optimized/metaanalysis.png"
   },
   {
     "url" : "http://datatools.urban.org/features/slepp/",
