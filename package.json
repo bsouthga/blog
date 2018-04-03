@@ -11,7 +11,7 @@
     "prettier": "prettier ./build/* --write",
     "tsc": "tsc",
     "build": "npm run tsc && npm run elm && npm run styles && node ./public/index.js",
-    "deploy": "npm run build && aws s3 sync ./public/ s3://bsou.io"
+    "deploy": "npm run build && aws s3 sync ./public/ s3://bsou.io --cache-control max-age=3600"
   },
   "license": "BSD3",
   "devDependencies": {
